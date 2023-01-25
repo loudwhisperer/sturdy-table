@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS tableapp_db;
+CREATE DATABASE tableapp_db;
