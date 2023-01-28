@@ -71,10 +71,19 @@ Event.init({
       unique: true,
     },
   },
+  category: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  game_name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
   modelName: "event",
 });
-// add game category and game name fields with references to the models therein
+
+module.exports = Event;
