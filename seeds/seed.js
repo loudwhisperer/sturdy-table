@@ -18,3 +18,5 @@ const seedDB = async () => {
 
   process.exit(0);
 }
+
+seedDB();
