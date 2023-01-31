@@ -3,60 +3,52 @@ const { Event } = require('../models');
 const eventEl = [
     {
         name: "Deep, Dark, and Dangerous",
-        // date: "",
-        // time_start: "",
-        est_length: 120,
+        date: "2023-02-16",
+        time_start: "14:00:00",
+        est_length: 150,
         is_public: true,
         is_virtual: false,
         max_users: 8,
         location: "123 Main St. Fort Collins, CO 80525",
-        // attending_id: "",
-        host_id: "", //This should probably be an integer
-        category: "Dungeon Crawler",
-        game_name: "Dungeon!",
-        notes: ""
+        category: "Campaign/Legacy",
+        game_name: "Gloomhaven",
+        notes: "Hosting up to two games depending on attendance. Typical length is 2 hours. BYOB!"
     },
     {
         name: "Wednesday Night Draft",
-        date: "",
-        time_start: "",
+        date: "2023-02-01",
+        time_start: "19:30:00",
         est_length: 240,
         is_public: true,
         is_virtual: false,
-        max_users: 25,
+        max_users: 24,
         location: "1119 W Drake Rd C-30, Fort Collins, CO 80526",
-        attending_id: "",
-        host_id: "",
         category: "Deck Construction",
         game_name: "Magic: The Gathering",
         notes: ""
     }, 
     {
         name: "Saturday Smash Suite",
-        date: "",
-        time_start: "",
+        date: "2023-04-01",
+        time_start: "12:00:00",
         est_length: 600,
         is_public: true,
         is_virtual: true,
         max_users: 32,
         location: "smash.gg",
-        attending_id: "",
-        host_id: "",
         category: "Video Game",
         game_name: "Super Smash Bros. Ultimate",
         notes: ""
     },
     {
         name: "Does Anyone Have Any Sheep?",
-        date: "",
-        time_start: "",
+        date: "2023-02-08",
+        time_start: "18:30:00",
         est_length: 180,
         is_public: false,
         is_virtual: false,
         max_users: 18,
         location: "4600 Jason St, Denver, CO 80211",
-        attending_id: "",
-        host_id: "",
         category: "Eurogame",
         game_name: "Settlers of Catan",
         notes: ""
@@ -70,8 +62,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -85,8 +75,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -100,8 +88,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -115,8 +101,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -130,8 +114,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -145,8 +127,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -160,8 +140,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -175,8 +153,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -190,8 +166,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -205,8 +179,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -220,8 +192,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -235,8 +205,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -250,8 +218,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -265,8 +231,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -280,8 +244,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
@@ -295,8 +257,6 @@ const eventEl = [
         is_virtual: true,
         max_users: 50,
         location: "",
-        attending_id: "",
-        host_id: "",
         category: "",
         game_name: "",
         notes: ""
