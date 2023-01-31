@@ -28,7 +28,8 @@ User.init(
       allowNull: false,
       validate: {
         len: [8],
-        is: "(?=^.{8,}$)((?=.*d)|(?=.*W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+        isAlphanumeric: true,
+        //TODO: validate password betterer
       },
     },
     displayname: {

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Event, Friend, EventGroup } = require("../../models");
+const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
   try {
@@ -24,18 +25,25 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  try{
-const userData = await User.create({
-  email: req.body.email,
-  password: req.body.password,
-  displayname: req.body.displayname,
-});
-res.status(200).json(userData);
-  } catch(err){
-    console.info(req.body);
-res.status(400).json(err);
+      try {
+    const dbUserData = await User.create({
+      displayname: req.body.displayname,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+   
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
-})
+});
+
 
 
 module.exports.getFriends = async (req, res) => {
