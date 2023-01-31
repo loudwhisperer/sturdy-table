@@ -18,3 +18,5 @@ User.belongsToMany(models.User, {
   foreignKey: "friend_id", 
   through: Friend
 });
+
+Event.belongsTo(User);
