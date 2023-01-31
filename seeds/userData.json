@@ -82,5 +82,33 @@
     "displayname": "AquaAnt",
     "avatarpic": "",
     "friends_list": ""
+  },
+  {
+    "email": "toasterrage@gmail.com",
+    "password": "josh12345password",
+    "displayname": "TheJosh",
+    "avatarpic": "",
+    "friends_list": ""
+  },
+  {
+    "email": "thefiftharthur@gmail.com",
+    "password": "arthur12345password",
+    "displayname": "fives",
+    "avatarpic": "",
+    "friends_list": ""
+  },
+  {
+    "email": "raspberry.muppet@gmail.com",
+    "password": "christin12345password",
+    "displayname": "Porkchop",
+    "avatarpic": "",
+    "friends_list": ""
+  },
+  {
+    "email": "zoey@gmail.com",
+    "password": "brenden12345password",
+    "displayname": "Driftaway",
+    "avatarpic": "",
+    "friends_list": ""
   }
 ]
