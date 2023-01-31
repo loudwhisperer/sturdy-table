@@ -2,8 +2,8 @@ const User = require('./User');
 const Event = require('./Event');
 const Friend = require('./Friend');
 
-User.hasMany(Event, {
-  foreignKey: attending_id,
+Event.hasMany(User, {
+  //foreignKey: attending_id,
   foreignKey: host_id,
 });
 
