@@ -54,24 +54,24 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    attending_id: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references: {
-        model: "user",
-        key: "id",
-        unique: true,
-      },
-    },
-    host_id: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references: {
-        model: "user",
-        key: "id",
-        unique: true,
-      },
-    },
+    // attending_id: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   references: {
+    //     model: "user",
+    //     key: "id",
+    //     unique: true,
+    //   },
+    // },
+    // host_id: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   references: {
+    //     model: "user",
+    //     key: "id",
+    //     unique: true,
+    //   },
+    // },
     category: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -79,6 +79,10 @@ Event.init(
     game_name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    notes: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {
