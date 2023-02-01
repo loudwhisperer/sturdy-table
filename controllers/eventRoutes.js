@@ -22,3 +22,5 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(eventData);
 } catch(err){}
 });
+
+module.exports = router;
