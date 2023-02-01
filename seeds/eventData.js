@@ -223,7 +223,7 @@ const eventEl = [
         notes: "Just looking to play some casual games with the friends. Bring what you want!"
     },
     {
-        name: "",
+        name: "Looking to learn something new?",
         date: "2023-04-12",
         time_start: "11:30:00",
         est_length: 60,
