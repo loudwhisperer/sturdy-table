@@ -1,6 +1,6 @@
 const sequelize = require('../config/connection');
 // Seeded user data from separate file
-const { User, Event } = require('../models');
+const { User, Event, Eventgroup } = require('../models');
 const userData = require('./userData.json');
 const eventData = require('./eventData');
 
@@ -18,6 +18,7 @@ const seedDB = async () => {
   // Seed event data
   await eventData();
   console.log('\n----- EVENTS SEEDED -----\n');
+  
   process.exit(0);
 }
 
