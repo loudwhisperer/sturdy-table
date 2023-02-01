@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Table</title>
+</head>
+<body>
+  <header>
+    <img src="" alt="The Table Logo">
+    <nav>
+      <div>
+        <a href="/">Home</a>
+        {{#if loggedIn}}
+          <a href="/account">Account</a>
+          <a href="/create-event">Host Event</a>
+          <a href="/logout">Logout</a>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
+      </div>
+      <div id="nav-filter">
+        <button>Filter</button>
+        <div>
+          <span>By Date</span>
+          <div id="filter-by-date">
+            <span>Within 7 Days</span>
+            <span>Within 30 Days</span>
+          </div>
+          <span>Virtual Only</span>
+          <span>Physical Only</span>
+          <span>Not Full</span>
+          <span>By Game</span>
+          <div>
+            <input type="text" name="filter-by-game" id="filter-by-game">
+          </div>
+          <span>By Tag</span>
+          <div id="filter-by-tag">
+            <div>
+              <label for="filter-other-tag"></label>
+              <input type="text" name="filter-other-tag" id="filter-other-tag">
+            </div>
+            <span>Abstract</span>
+            <span>Area Control</span>
+            <span>Campaign/Legacy</span>
+            <span>Deckbuilder</span>
+            <span>Deck Construction</span>
+            <span>Dexterity</span>
+            <span>Drafting</span>
+            <span>Dungeon Crawler</span>
+            <span>Engine-builder</span>
+            <span>Eurogame</span>
+            <span>Push-Your-Luck</span>
+            <span>Roll-and-Move</span>
+            <span>Roll-and-Write</span>
+            <span>Social Deduction</span>
+            <span>Storytelling</span>
+            <span>TTRPG</span>
+            <span>Video Game</span>
+            <span>Worker Placement</span>
+            <span>Wargame</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <aside>
+    <h3>Friends List</h3>
+    <div>
+      
+    </div>
+  </aside>
+  {{{ body }}}
+
+
+</body>
+</html>
