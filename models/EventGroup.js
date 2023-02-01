@@ -8,7 +8,7 @@ Eventgroup.init(
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     attending_id: {
       type: DataTypes.INTEGER,
@@ -16,7 +16,15 @@ Eventgroup.init(
     host_id: {
       type: DataTypes.INTEGER,
     },
-  });
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "eventgroup",
+  }
+);
   Eventgroup.associate = () => {
     Eventgroup.belongsTo(User, {
       foreignKey: 'id'
