@@ -13,7 +13,7 @@ const eventEl = [
         category: "Campaign/Legacy",
         game_name: "Gloomhaven",
         notes: "Hosting up to two games depending on attendance. Typical length is 2 hours. BYOB!"
-    },
+    }, 
     {
         name: "Wednesday Night Draft",
         date: "2023-02-08",
@@ -260,9 +260,9 @@ const eventEl = [
         category: "Worker Placement",
         game_name: "Ultimate Railroads",
         notes: "All Aboard! Toot Toot!"
-    }
-]
+    } 
+];
 
-const eventData = () => Event.bulkCreate(eventData);
+const eventData = () => Event.bulkCreate(eventEl);
 
 module.exports = eventData;

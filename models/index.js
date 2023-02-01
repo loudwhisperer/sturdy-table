@@ -33,4 +33,4 @@ const eventGroup = require('./EventGroup')
 
 Event.belongsTo(User);
 
-module.exports = {User}
+module.exports = {User, Event}
