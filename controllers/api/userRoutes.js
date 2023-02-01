@@ -44,6 +44,12 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", (req, res) => {
+  User.destroy({ where: { id: req.params.id } }).then((data) =>
+    res.json(data)
+  );
+});
+
 
 
 module.exports.getFriends = async (req, res) => {

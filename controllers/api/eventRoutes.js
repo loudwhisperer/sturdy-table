@@ -46,4 +46,10 @@ router.post("/", async (req, res) =>{
   }
 })
 
+router.delete("/:id", (req, res) => {
+  Event.destroy({ where: { id: req.params.id } }).then((data) =>
+    res.json(data)
+  );
+});
+
 module.exports = router;
