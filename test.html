@@ -1,0 +1,50 @@
+<div>
+  <!-- {{!-- Card for returning users to enter log in information --}} -->
+  <section class="loginCard">
+    <h2 class="cardTitle">Login</h2>
+    <form class="loginForms">
+      <div class="loginGrouping">
+        <label for="loginEmail">Email:</label>
+        <input type="text" class="formInput" id="loginEmail" />
+      </div>
+      <div class="loginGrouping">
+        <label for="loginPassword">Password:</label>
+        <input type="password" class="formInput" id="loginPassword" />
+      </div>
+      <div class="loginGrouping">
+        <button class="loginButton" type="submit">Log In</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- {{!-- Card for new user to sign up --}} -->
+
+  <section class="signUpCard">
+    <h2 class="cardTitle">Register</h2>
+    <form class="signUpForms">
+      <div class="signUpGrouping">
+        <label for="signUpEmail">Email:</label>
+        <input type="text" class="formInput" id="signUpEmail" />
+      </div>
+      <div class="signUpGrouping">
+        <label for="signUpDisplayName">Choose your Display Name:</label>
+        <input type="text" class="formInput" id="signUpDisplayName" />
+      </div>
+      <div class="signUpGrouping">
+        <label for="signUpPassword">Password:</label>
+        <input type="password" class="formInput" id="signUpPassword" />
+      </div>
+      <div class="signUpGrouping">
+        <label for="signUpConfirmPassword">Confirm Password:</label>
+        <input type="password" class="formInput" id="signUpConfirmPassword" />
+      </div>
+      <form action="/action_page.php">
+        <label for="img">Select Profile Picture:</label>
+        <input type="file" id="avatarPic" name="avatarPic" accept="image/*" />
+      </form>
+      <div class="signUpGrouping">
+        <button class="signUpButton" type="submit">Sign Up</button>
+      </div>
+    </form>
+  </section>
+</div>
