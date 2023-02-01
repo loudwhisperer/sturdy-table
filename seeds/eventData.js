@@ -25,7 +25,7 @@ const eventEl = [
         location: "1119 W Drake Rd C-30, Fort Collins, CO 80526",
         category: "Deck Construction",
         game_name: "Magic: The Gathering",
-        notes: "Entrance cost is $10. All ages welcome."
+        notes: "Entrance cost is $10 at the door. All ages welcome."
     }, 
     {
         name: "Saturday Smash Suite",
@@ -76,7 +76,7 @@ const eventEl = [
         max_users: 6,
         location: "",
         category: "Wargame",
-        game_name: "Warhammer 40,000 (1998)",
+        game_name: "Warhammer 40,000",
         notes: "Playing old school 40k. Beverages supplied."
     },
     {
@@ -102,7 +102,7 @@ const eventEl = [
         max_users: 6,
         location: "1119 W Drake Rd C-30, Fort Collins, CO 80526",
         category: "Area Control",
-        game_name: "Dune (2019)",
+        game_name: "Dune",
         notes: "Casual game with some friends."
     },
     {
@@ -115,7 +115,7 @@ const eventEl = [
         max_users: 6,
         location: "27 Columbia Way, Las Vegas NV, 88901",
         category: "Roll-and-Move",
-        game_name: "Clue (2012)",
+        game_name: "Clue",
         notes: "Couple of late night games to get ready for the murder mystery movie. Popcorn supplied!"
     },
     {
@@ -128,7 +128,7 @@ const eventEl = [
         max_users: 2,
         location: "1600 Pennsylvania Avenue NW, Washington, DC 20500",
         category: "Social Deduction",
-        game_name: "Coup (2012)",
+        game_name: "Coup",
         notes: "Grandpa, can you see this event yet?"
     },
     {
@@ -178,23 +178,23 @@ const eventEl = [
         is_public: true,
         is_virtual: true,
         max_users: 2,
-        location: "",
+        location: "en.boardgamearena.com",
         category: "Abstract",
         game_name: "7 Wonders Duel",
         notes: "Who will challenge me?! Best of 3."
     },
     {
-        name: "",
+        name: "Let's Go Exploring!",
         date: "2023-04-07",
         time_start: "15:00:00",
-        est_length: ,
-        is_public: ,
-        is_virtual: ,
-        max_users: ,
-        location: "",
-        category: "",
-        game_name: "",
-        notes: ""
+        est_length: 90,
+        is_public: false,
+        is_virtual: true,
+        max_users: 5,
+        location: "roll20.com",
+        category: "Campaign/Legacy",
+        game_name: "Betrayal Legacy",
+        notes: "I hear this one is spooooooky"
     },
     {
         name: "Space Combat Combantant Needed!",
@@ -226,27 +226,27 @@ const eventEl = [
         name: "",
         date: "2023-04-12",
         time_start: "11:30:00",
-        est_length: ,
-        is_public: ,
-        is_virtual: ,
-        max_users: ,
-        location: "",
-        category: "",
-        game_name: "",
-        notes: ""
+        est_length: 60,
+        is_public: true,
+        is_virtual: true,
+        max_users: 4,
+        location: "en.boardgamearena.com",
+        category: "Engine Builder",
+        game_name: "Race for the Galaxy",
+        notes: "Trying to teach new players how to play this awesome game!"
     },
     {
-        name: "",
+        name: "Who will be the Super Star?!",
         date: "2023-02-21",
         time_start: "10:45:00",
-        est_length: ,
-        is_public: ,
-        is_virtual: ,
-        max_users: ,
-        location: "",
-        category: "",
-        game_name: "",
-        notes: ""
+        est_length: 120,
+        is_public: true,
+        is_virtual: false,
+        max_users: 12,
+        location: "2721 S College Ave, Fort Collins, CO 80525",
+        category: "Video Game",
+        game_name: "Mario Party 7",
+        notes: "We have 3 set ups that can allow up to 4 players on each. Controller required to play. Bring your A Game."
     },
     {
         name: "Journey to the West",
