@@ -73,8 +73,6 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
-# temp file to hold gmail info while package usages is figured out for this project
-.send-email.js
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
