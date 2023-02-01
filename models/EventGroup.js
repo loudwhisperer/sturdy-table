@@ -28,3 +28,4 @@ Eventgroup.init(
   return Eventgroup;
 
   module.export = Eventgroup;
+
