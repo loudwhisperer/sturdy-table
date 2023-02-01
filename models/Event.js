@@ -25,10 +25,6 @@ Event.init(
     time_start: {
       type: DataTypes.TIME,
       allowNull: false,
-      validate: {
-        is: "^(1[0-2]|0?[1-9]):([0-5]?[0-9])(●?[AP]M)?$", //12 hour format
-        is: "^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$", //24 hour format
-      },
     },
     est_length: {
       type: DataTypes.INTEGER,
@@ -45,33 +41,11 @@ Event.init(
     max_users: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        isNumber: true,
-        len: [2],
-      },
     },
     location: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    // attending_id: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   references: {
-    //     model: "user",
-    //     key: "id",
-    //     unique: true,
-    //   },
-    // },
-    // host_id: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   references: {
-    //     model: "user",
-    //     key: "id",
-    //     unique: true,
-    //   },
-    // },
     category: {
       type: DataTypes.STRING,
       allowNull: true,
