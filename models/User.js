@@ -44,15 +44,6 @@ User.init(
       type: DataTypes.BLOB,
       allowNull: true,
     },
-    // friends_list: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   references: {
-    //     model: "user",
-    //     key: "id",
-    //     unique: true,
-    //   },
-    // },
   },
   {
     hooks: {
