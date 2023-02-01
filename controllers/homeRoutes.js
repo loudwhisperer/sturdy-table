@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       // include: [{ model: Table, attributes: ['column name'] }]
     });
     const events = eventData.map((event) => event.get({ plain:true }));
-    console.info(events);
+    
     // Send handlebars page to user
     res.render('homepage', { events });
   } 
