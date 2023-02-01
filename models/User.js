@@ -28,7 +28,8 @@ User.init(
       allowNull: false,
       validate: {
         len: [8],
-        is: "(?=^.{8,}$)((?=.*d)|(?=.*W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+        isAlphanumeric: true,
+        //TODO: validate password betterer
       },
     },
     displayname: {
@@ -43,15 +44,15 @@ User.init(
       type: DataTypes.BLOB,
       allowNull: true,
     },
-    friends_list: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references: {
-        model: "user",
-        key: "id",
-        unique: true,
-      },
-    },
+    // friends_list: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   references: {
+    //     model: "user",
+    //     key: "id",
+    //     unique: true,
+    //   },
+    // },
   },
   {
     hooks: {
@@ -72,7 +73,7 @@ User.init(
     freezeTableName: true,
     underscored: true,
     modelName: "user",
-  }
+  },
 );
 
 module.exports = User;

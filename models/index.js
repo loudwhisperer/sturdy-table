@@ -1,20 +1,41 @@
-const User = require('./User');
-const Event = require('./Event');
-const Friend = require('./Friend');
+//const {User, Event, Friend, EventGroup} = require('./models')
+const User = require("./User");
+const Event = require("./Event");
+const Friend = require("./Friend");
+const Eventgroup = require("./Eventgroup");
 
-User.hasMany(Event, {
-  foreignKey: attending_id,
-  foreignKey: host_id,
-});
 
-User.belongsToMany(models.User, {
-  as: "friends",
-  foreignKey: "user_id",
-  through: Friend
-});
+//Event Group Associations
 
-User.belongsToMany(models.User, {
-  as: "userFriends", 
-  foreignKey: "friend_id", 
-  through: Friend
-});
+Eventgroup.associate = () => {
+  Eventgroup.belongsTo(User, {
+    foreignKey: "id",
+    targetKey: "id",
+    as: "User",
+  });
+  Eventgroup.belongsTo(Event, {
+    foreignKey: "id",
+    targetKey: "id",
+    as: "Event",
+  });
+};
+
+Event.associate = () => {
+  Event.belongsToMany(User, {
+    as: "EventsForUsers",
+    through: Eventgroup,
+    foreignKey: "id",
+  });
+};
+
+User.associate = () => {
+  User.belongsToMany(Event, {
+    as: "UsersForEvents",
+    through: Eventgroup,
+    foreignKey: "id",
+  });
+};
+
+//Event Group Associations End
+
+module.exports = { User, Event, Eventgroup };

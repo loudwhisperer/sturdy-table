@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Event, Friend, EventRoutes } = require("../models");
 
+//frontend route that is expecting a res.render of a handlebars component 
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll();
@@ -22,3 +23,5 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(eventData);
 } catch(err){}
 });
+
+module.exports = router;
