@@ -10,10 +10,14 @@ Eventgroup.init(
       autoIncrement: true,
       primaryKey: true,
     },
+    //another through table for attending id 
     attending_id: {
       type: DataTypes.INTEGER,
     },
     host_id: {
+      type: DataTypes.INTEGER,
+    },
+    event_id: {
       type: DataTypes.INTEGER,
     },
   },
