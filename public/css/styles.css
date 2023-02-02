@@ -5,7 +5,7 @@
   --color-secondary: #CDC6AF;
   --color-on-secondary: #343020;
   --color-bg: #1E1B1A;
-  --border-radius: .5rem;
+  --border-radius: .75rem;
 }
 
 /* Page wide styles */
@@ -30,6 +30,7 @@ header {
   background-color: var(--color-secondary);
   color: var(--color-on-secondary);
   display: flex;
+  border-bottom-right-radius: var(--border-radius);
 }
 
 .logo {
@@ -55,7 +56,6 @@ nav {
 
 #nav-filter {
   width: 100%;
-  
 }
 
 #nav-filter button {
@@ -64,6 +64,24 @@ nav {
   text-transform: uppercase;
   border-radius: var(--border-radius);
   float: right;
+}
+
+/* Friends List Styles */
+aside {
+  width: 16rem;
+  height: 80%;
+  float: left;
+  position: fixed;
+  bottom: 1rem;
+  z-index: 2;
+  background-color: var(--color-secondary);
+  border-radius: var(--border-radius);
+}
+
+aside h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 /* Event Card Styles */
