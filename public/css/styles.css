@@ -19,7 +19,6 @@ body {
   margin: 0;
   background-color: var(--color-bg);
   min-width: 64rem;
-  border: 1px solid red;
 }
 
 /* Nav Styles */
@@ -27,6 +26,7 @@ header {
   height: 8.5rem;
   width: 100%;
   position: fixed;
+  top: 0;
   background-color: var(--color-secondary);
   color: var(--color-on-secondary);
   display: flex;
@@ -85,7 +85,9 @@ aside h3 {
 }
 
 /* Event Card Styles */
-
+.content-container {
+  margin: 9.5rem 1rem 1rem 17rem;
+}
 
 /* Responsive Styles */
 /* Tablet - 720-1023 */
