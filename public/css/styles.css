@@ -89,6 +89,35 @@ aside h3 {
   margin: 9.5rem 1rem 1rem 17rem;
 }
 
+#event-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.event-card {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--border-radius);
+  padding: .5rem;
+}
+
+.card-container-title {
+  
+}
+
+.card-container-title h2, .card-container-game h3 {
+  margin: 0;
+}
+
+.card-container-game {
+
+}
+
+.card-container-footer {
+
+}
+
 /* Responsive Styles */
 /* Tablet - 720-1023 */
 @media screen and (max-width: 1023px) {}
