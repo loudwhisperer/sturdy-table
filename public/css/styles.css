@@ -18,14 +18,14 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: var(--color-bg);
-  max-width: 64rem;
+  min-width: 64rem;
   border: 1px solid red;
 }
 
 /* Nav Styles */
 header {
   height: 8.5rem;
-  width: 1024px;
+  width: 100%;
   position: fixed;
   background-color: var(--color-secondary);
   color: var(--color-on-secondary);
@@ -45,6 +45,7 @@ nav {
   align-self: center;
   display: grid;
   grid-template-columns: 75% 25%;
+  padding: 0 1rem;
 }
 
 .nav-links {
@@ -53,13 +54,16 @@ nav {
 }
 
 #nav-filter {
-  width: 5rem;
+  width: 100%;
+  
 }
 
 #nav-filter button {
   font-size: 2.5rem;
   font-weight: 400;
+  text-transform: uppercase;
   border-radius: var(--border-radius);
+  float: right;
 }
 
 /* Event Card Styles */
