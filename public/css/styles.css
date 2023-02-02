@@ -1,13 +1,50 @@
+/* Styling Variables */
+:root {
+  --color-primary: #623E2E;
+  --color-on-primary: #FFDBCD;
+  --color-secondary: #CDC6AF;
+  --color-on-secondary: #343020;
+  --color-bg: #1E1B1A;
+  --border-radius: .5rem;
+}
+
 /* Page wide styles */
 * {
   font-family: "Montserrat", serif;
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--color-bg);
+  width: 100%;
+}
+
 /* Nav Styles */
+header {
+  height: 8.5rem;
+  width: 100%;
+  position: fixed;
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
+  display: flex;
+}
+
 .logo {
   width: 16rem;
   height: 12rem;
+  padding: .5rem 0;
+  border-radius: var(--border-radius);
+  background-color: var(--color-secondary);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-filter {
+  width: 5rem;
 }
 
 /* Event Card Styles */
