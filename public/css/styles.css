@@ -55,3 +55,8 @@ nav {
 
 /* Mobile - 719 and below */
 @media screen and (max-width: 719px) {}
+
+/* Other Styling*/
+.hidden {
+  display: none;
+}
