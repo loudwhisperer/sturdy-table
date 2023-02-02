@@ -14,7 +14,7 @@
   <header>
     <img class="logo" src="./images/thetable_logo.svg" alt="The Table Logo">
     <nav>
-      <div>
+      <div class="nav-links">
         <a href="/">Home</a>
         {{#if loggedIn}}
           <a href="/account">Account</a>
@@ -27,20 +27,20 @@
       <div id="nav-filter">
         <button>Filter</button>
         <div>
-          <span>By Date</span>
-          <div id="filter-by-date">
+          <span class="filter-container">By Date</span>
+          <div id="filter-by-date" class="hidden">
             <span>Within 7 Days</span>
             <span>Within 30 Days</span>
           </div>
           <span>Virtual Only</span>
           <span>Physical Only</span>
           <span>Not Full</span>
-          <span>By Game</span>
+          <span class="filter-container">By Game</span>
           <div>
             <input type="text" name="filter-by-game" id="filter-by-game">
           </div>
-          <span>By Tag</span>
-          <div id="filter-by-tag">
+          <span class="filter-container">By Tag</span>
+          <div id="filter-by-tag" class="hidden">
             <div>
               <label for="filter-other-tag"></label>
               <input type="text" name="filter-other-tag" id="filter-other-tag">
@@ -69,7 +69,7 @@
       </div>
     </nav>
   </header>
-  <aside>
+  <aside id="friends-list-container">
     <h3>Friends List</h3>
     <div>
       
