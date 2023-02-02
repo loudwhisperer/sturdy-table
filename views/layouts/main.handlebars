@@ -16,13 +16,13 @@
     <nav>
       <div class="nav-links">
         <a href="/">Home</a>
-        {{#unless loggedIn}}
+        {{#if loggedIn}}
           <a href="/account">Account</a>
           <a href="/create-event">Host Event</a>
           <a href="/logout">Logout</a>
         {{else}}
           <a href="/login">Login</a>
-        {{/unless}}
+        {{/if}}
       </div>
       <div id="nav-filter">
         <button>Filter</button>
