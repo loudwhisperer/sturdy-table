@@ -1,5 +1,7 @@
-# sturdy-table
+# The Table
 
+<!-- Project Shields -->
+[![Contributors][contributors-shield]][contributors-url]
 ![GitHub](https://img.shields.io/github/license/loudwhisperer/sturdy-table?style=for-the-badge)
 ![node-lts](https://img.shields.io/badge/node-16.18.0-brightgreen?style=for-the-badge)
 [![npm version](https://img.shields.io/badge/express-4.18.2-brightgreen?style=for-the-badge)](https://badge.fury.io/js/express)
@@ -7,7 +9,7 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+Users are able to create, join, share, and invite other users to events they create related to a game of their choosing! This makes setting up a game night with friends or even users that you don't know a seamless experience.
 
 - What was your motivation?
 - Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
@@ -59,3 +61,7 @@ If you created an application or package and would like other developers to cont
 ## Tests
 
 Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+
+<!-- Markdown links and shields -->
+[contributors-shield]: https://img.shields.io/github/contributors/loudwhisperer/sturdy-table.svg?style=for-the-badge
+[contributors-url]: https://github.com/loudwhisperer/sturdy-table/graphs/contributors
