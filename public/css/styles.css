@@ -1,0 +1,151 @@
+/* Styling Variables */
+:root {
+  --color-primary: #623E2E;
+  --color-on-primary: #FFDBCD;
+  --color-secondary: #CDC6AF;
+  --color-on-secondary: #343020;
+  --color-bg: #1E1B1A;
+  --border-radius: .75rem;
+}
+
+/* Page wide styles */
+* {
+  font-family: "Montserrat", serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--color-bg);
+  min-width: 64rem;
+}
+
+/* Nav Styles */
+header {
+  height: 8.5rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
+  display: flex;
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.logo {
+  width: 16rem;
+  height: 12rem;
+  padding: .5rem 0;
+  border-radius: var(--border-radius);
+  background-color: var(--color-secondary);
+}
+
+nav {
+  width: 100%;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  padding: 0 1rem;
+}
+
+.nav-links {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+#nav-filter {
+  width: 100%;
+}
+
+#nav-filter button {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-radius: var(--border-radius);
+  float: right;
+}
+
+/* Friends List Styles */
+aside {
+  width: 16rem;
+  height: 80%;
+  float: left;
+  position: fixed;
+  bottom: 1rem;
+  z-index: 2;
+  background-color: var(--color-secondary);
+  border-radius: var(--border-radius);
+}
+
+aside h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+/* Main Content Styling */
+.content-container {
+  margin: 9.5rem 1rem 1rem 17rem;
+}
+
+/* Event Card Styles */
+#event-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.event-card {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--border-radius);
+  padding: .5rem;
+}
+
+.card-container-title {
+  font-size: 1.5rem;
+  font-weight: 200;
+  text-align: center;
+  padding: 1rem .15rem;
+}
+
+.card-container-title h2, .card-container-game h3 {
+  margin: 0;
+}
+
+.card-container-game {
+  text-align: center;
+  padding: 0 .15rem 1rem;
+}
+
+.card-container-game h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  padding-top: .25rem;
+}
+
+.card-container-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.location-icon {
+
+}
+
+.event-date {
+
+}
+
+/* Responsive Styles */
+/* Tablet - 720-1023 */
+@media screen and (max-width: 1023px) {}
+
+/* Mobile - 719 and below */
+@media screen and (max-width: 719px) {}
+
+/* Other Styling*/
+.hidden {
+  display: none;
+}
