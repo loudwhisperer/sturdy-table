@@ -10,6 +10,10 @@ Eventgroup.init(
       autoIncrement: true,
       primaryKey: true,
     },
+    approved: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     userId: {
       type: DataTypes.INTEGER,
       references: {

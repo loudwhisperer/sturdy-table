@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Event, Friend, EventGroup } = require("../../models");
+const { User, Event, EventGroup } = require("../../models");
 const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include: [{ model: User, as: "displayname" }],
+      include: [{ model: User}],
     });
     if (!userData) {
       res.status(404).json({ message: "No User Found By This Name" });
@@ -44,6 +44,63 @@ router.post("/", async (req, res) => {
   }
 });
 
+//login post for a user to login
+router.post("/login", async (req, res) => {
+  try {
+    const data = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!data) {
+      res
+        .status(404)
+        .json({
+          message:
+            "No Email of that name resides in this town dear adventurer",
+        });
+      return;
+    }
+
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      data.password
+    );
+    if (!validPassword) {
+      res
+        .status(404)
+        .json({
+          message:
+            "You roll a one on you intelligence check, please provide a valid password or use a registered email.",
+        });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json({ message: "Login succeeded" });
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({
+        message:
+          "An error occurred, please try again. If problem persists roll for initiative",
+      });
+  }
+});
+
+
+router.put("/:id", async (req, res) => {
+  try{ 
+    const data = await User.update(req.body, { where: { id: req.params.id } })
+     res.status(200).json(data);
+  }catch(err){
+  res.status(500).json(err);
+  }
+})
+
 router.delete("/:id", (req, res) => {
   User.destroy({ where: { id: req.params.id } }).then((data) =>
     res.json(data)
@@ -51,7 +108,7 @@ router.delete("/:id", (req, res) => {
 });
 
 
-
+// for future development as of a freind request and friend list system
 // module.exports.getFriends = async (req, res) => {
 //     try {
 //        const user = await db.User.findOne({
