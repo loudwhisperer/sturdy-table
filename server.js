@@ -23,7 +23,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
-
+// sequelize.query("SET FOREIGN_KEY_CHECKS = 0")
+//   .then(function () {
+//     return sequelize.sync({ force: true });
+//   })
+//   .then(function () {
+//     return sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
+//   })
+//   .then(
+//     function () {
+//       console.log("Database synchronised.");
+//     },
+//     function (err) {
+//       console.log(err);
+//     }
+//   );
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`App started in Port ${PORT}`);
