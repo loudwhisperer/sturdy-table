@@ -130,12 +130,21 @@ aside h3 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.location-icon {
+.location-icon, .event-date, .event-capacity {
+  display: flex;
+  align-items: center;
+}
 
+.location-icon {
+  justify-content: start;
 }
 
 .event-date {
+  justify-content: center;
+}
 
+.event-capacity {
+  justify-content: end;
 }
 
 /* Responsive Styles */

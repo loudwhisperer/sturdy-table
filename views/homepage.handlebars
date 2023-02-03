@@ -9,17 +9,17 @@
         <h3>{{event.game_name}}</h3>
       </div>
       <div class="card-container-footer">
-        <div>
+        <div class="location-icon">
           {{#if event.is_virtual}}
             <img src="./images/virtual-icon.svg" alt="virtual link">
           {{else}}
             <img src="./images/physical-icon.svg" alt="physical location">
           {{/if}}
         </div>
-        <div>
+        <div class="event-date">
           <span>{{event.date}}</span>
         </div>
-        <div>
+        <div class="event-capacity">
           <span> 00 / {{event.max_users}}</span>
         </div>
       </div>
