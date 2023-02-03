@@ -10,34 +10,28 @@ Eventgroup.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    //another through table for attending id 
-    attending_id: {
+    userId: {
       type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: "id",
+      },
     },
-    host_id: {
+    eventId: {
       type: DataTypes.INTEGER,
-    },
-    event_id: {
-      type: DataTypes.INTEGER,
+      references: {
+        model: 'event',
+        key: "id",
+      },
     },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    underscored: true,
+    //underscored: true,
     modelName: "eventgroup",
   }
 );
-  Eventgroup.associate = () => {
-    Eventgroup.belongsTo(User, {
-      foreignKey: 'id'
-    });
-    Eventgroup.belongsTo(Event, {
-      foreignKey: 'id'
-    });
-  }
-  return Eventgroup;
 
-  module.export = Eventgroup;
-
+module.exports = Eventgroup;
