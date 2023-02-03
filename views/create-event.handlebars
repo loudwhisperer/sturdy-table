@@ -1,0 +1,71 @@
+<div>
+    <h1>Start a Game?</h1>
+    <input type="text" placeholder="Name the Event" id="eventTitle"></input>
+    <!-- event photo input -->
+    <form action="/action_page.php">
+        <input type="file" id="eventPic" name="eventPic">
+        <p>Choose Event Photo</p>
+    </form>
+    <!-- dropdown menu for game choices -->
+    <label for="game-choices">Choose a Game:</label>
+    <select name="game-choices" id="game-choices">
+        <option value="game1">Game 1</option>
+        <option value="game2">Game 2</option>
+        <option value="game3">Game 3</option>
+        <option value="na">N/A</option>
+    </select>
+    <input type="text" placeholder="Add Custom Game" id="gameCustomChoice"></input>
+    <input type="text" placeholder="Event Description" id="eventDescription"></input>
+    <input type="text" placeholder="Add Notes (Example: BYOB)" id="eventNotes"></input>
+    <!-- Calendar for choosing the date -->
+    <!-- TODO: Placeholder for the date -->
+    <!-- TODO: Placeholder for the time -->
+    <fieldset id="eventDate">
+        <legend>Pick the Date:</legend>
+        <label for="eventDate">
+            <input id="eventDate"type="date" min="2023-02-01">
+        </label>
+    </fieldset>
+    <fieldset id="eventTime">
+        <legend>Pick the Time:</legend>
+        <label for="eventTime">
+            <input id="eventTime" type="time">
+        </label>
+    </fieldset>
+    
+    <input type="text" placeholder="How long is this Event?(min)" id="eventLength"></input>
+  
+    <label for="pub-priv">Public or Private?</label>
+    <select name="pub-priv" id="pub-priv">
+        <option value="public">Public</option>
+        <option value="private">Private</option>
+    </select>
+
+    <label for="virt-irl">Virtual or In Person?</label>
+    <select name="virt-irl" id="virt-irl">
+        <option value="virtual">Virtual</option>
+        <option value="inPerson">In Person</option>
+    </select>
+
+   
+    <fieldset id="addressInput">
+        <h4>Enter Address of the Event:</h4>
+        <p>Street Address</p>
+        <input type="text" placeholder="123 Main St" id="address1"></input>
+        <p>Address Line 2</p>
+        <input type="text" placeholder="Apt/Bldg #?" id="address2"></input>
+        <p>City</p>
+        <input type="text" placeholder="Denver" id="address3"></input>
+        <p>State</p>
+        <input type="text" placeholder="CO" id="address4"></input>
+        <p>Zip Code</p>
+        <input type="text" placeholder="80014" id="address5"></input>
+    </fieldset>
+
+    <input type="text" placeholder="How many people can play?" id="capacity"></input>
+
+    <div class="inviteOthers"></div>
+    <div class="attendees"></div>
+
+    <button id="createEvent" type="submit"></button>
+</div>
