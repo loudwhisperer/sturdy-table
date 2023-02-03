@@ -84,11 +84,12 @@ aside h3 {
   font-weight: 400;
 }
 
-/* Event Card Styles */
+/* Main Content Styling */
 .content-container {
   margin: 9.5rem 1rem 1rem 17rem;
 }
 
+/* Event Card Styles */
 #event-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -103,7 +104,10 @@ aside h3 {
 }
 
 .card-container-title {
-  
+  font-size: 1.5rem;
+  font-weight: 200;
+  text-align: center;
+  padding: 1rem .15rem;
 }
 
 .card-container-title h2, .card-container-game h3 {
@@ -111,10 +115,26 @@ aside h3 {
 }
 
 .card-container-game {
+  text-align: center;
+  padding: 0 .15rem 1rem;
+}
 
+.card-container-game h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  padding-top: .25rem;
 }
 
 .card-container-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.location-icon {
+
+}
+
+.event-date {
 
 }
 
