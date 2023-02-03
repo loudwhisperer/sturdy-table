@@ -55,7 +55,7 @@ router.post("/attending", async (req, res) => {
   }
 })
 
-router.get("/event/:id", async (req, res) => {
+router.get("/attending/:id", async (req, res) => {
   try{
   const eventData = await Eventgroup.findAll({where:{eventId: req.params.id} })
   res.status(200).json(eventData);
