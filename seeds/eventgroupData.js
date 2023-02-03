@@ -1,9 +1,9 @@
 const { Eventgroup } = require('../models');
 
-const eventgroupData = [
+const data = [
   {},
 ];
 
-const seedEventgroup = () => Eventgroup.bulkCreate(eventgroupData);
+const eventgroupData = () => Eventgroup.bulkCreate(data);
 
-module.exports = seedEventgroup;
+module.exports = eventgroupData;
