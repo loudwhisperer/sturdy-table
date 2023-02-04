@@ -32,12 +32,12 @@ const data = [
     eventId: 1
   },
   {
-    approved: true,
+    approved: false,
     userId: 10,
     eventId: 1
   },
   {
-    approved: true,
+    approved: false,
     userId: 14,
     eventId: 1
   },
@@ -87,17 +87,17 @@ const data = [
     eventId: 3
   },
   {
-    approved: true,
+    approved: false,
     userId: 14,
     eventId: 4
   },
   {
-    approved: true,
+    approved: false,
     userId: 15,
     eventId: 4
   },
   {
-    approved: true,
+    approved: false,
     userId: 16,
     eventId: 4
   },
@@ -132,27 +132,27 @@ const data = [
     eventId: 5
   },
   {
-    approved: true,
+    approved: false,
     userId: 15,
     eventId: 6
   },
   {
-    approved: true,
+    approved: false,
     userId: 16,
     eventId: 6
   },
   {
-    approved: true,
+    approved: false,
     userId: 13,
     eventId: 6
   },
   {
-    approved: true,
+    approved: false,
     userId: 14,
     eventId: 7
   },
   {
-    approved: true,
+    approved: false,
     userId: 15,
     eventId: 7
   },
@@ -162,12 +162,12 @@ const data = [
     eventId: 7
   },
   {
-    approved: true,
+    approved: false,
     userId: 15,
     eventId: 8
   },
   {
-    approved: true,
+    approved: false,
     userId: 16,
     eventId: 8
   },
