@@ -1,8 +1,10 @@
 <section id="event-container" class="content-container">
   <article data-id="{{event.id}}" class="event-page">
     <h2 id="event-title">{{event.name}}</h2>
-    <button id="edit-event">Edit Event</button>
-    <button id="cancel-event">Cancel Event</button>
+    {{#if event.host_id=session.userId}}
+      <button id="edit-event">Edit Event</button>
+      <button id="cancel-event">Cancel Event</button>
+    {{/if}}
     <div id="event-game">
       <span>Game Being Played</span>
       <h3>{{event.game_name}}</h3>
@@ -26,10 +28,31 @@
       <div id="event-attendees-header">
         <span>Attendees:</span>
         <span>Game Capacity: 0 / {{event.max_users}}</span>
+        <div>
+          {{#each party_members as |member|}}
+            <span>{{member.displayname}}</span>
+            {{#if member.eventgroup.approved}}
+              <img src="" alt="checkmark">
+            {{else}}
+              <img src="" alt="question mark">
+            {{/if}}
+          {{/each}}
+        </div>
       </div>
-      <p></p>
     </div>
+    {{#if event.is_virtual}}
+      <img src="./images/physical-icon.svg" alt="house icon">
+    {{#else}}
+      <img src="./images/virtual-icon.svg" alt="computer icon">
+    {{/if}}
     <span id="event-dop">Date of Play: {{event.date}}</span>
-    <button id="add-attendees">Add Members</button>
+    {{#if event.is_public}}
+      <img src="" alt="private icon">
+    {{/if}}
+    {{#if event.host_id=session.userId}}
+      <button id="add-attendees">Add Members</button>
+    {{#else}}
+      <button id="leave-event">Leave Event</button>
+    {{/if}}
   </article>
 </section>
