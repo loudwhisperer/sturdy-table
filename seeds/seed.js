@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 const { User, Event, Eventgroup } = require('../models');
 const userData = require('./userData.json');
 const eventData = require('./eventData');
+const eventgroupData = require('./eventgroupData');
 
 const seedDB = async () => {
   await sequelize.sync({ force: true });
@@ -18,6 +19,10 @@ const seedDB = async () => {
   // Seed event data
   await eventData();
   console.log('\n----- EVENTS SEEDED -----\n');
+
+  // Seed eventgroup data
+  await eventgroupData();
+  console.log('\n----- EVENTSGROUP SEEDED -----\n');
   
   process.exit(0);
 }
