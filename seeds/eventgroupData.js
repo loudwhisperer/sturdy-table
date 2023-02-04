@@ -128,7 +128,7 @@ const data = [
   },
   {
     approved: true,
-    userId: 3,
+    userId: 1,
     eventId: 5
   },
   {
