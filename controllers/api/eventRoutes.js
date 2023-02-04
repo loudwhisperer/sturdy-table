@@ -7,7 +7,7 @@ const { User, Event, Friend, Eventgroup } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
-      include: [{ model: User, through: Eventgroup }],
+      include: [{ model: User, as: "party_members" }],
     });
     res.status(200).json(eventData);
   } catch (err) {
@@ -31,7 +31,14 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({ message: "No Event Found By This Name" });
       return;
     }
-    res.status(200).json(eventData);
+
+    // Turn db data into handlebars plain obj
+    const event = eventData.get({ plain: true });
+
+    // Send handlebars page to user
+    res.render('event', { event });
+
+    //res.status(200).json(eventData);
 } catch(err){
   res.status(500).json(err.message);
 }
