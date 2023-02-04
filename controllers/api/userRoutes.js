@@ -29,6 +29,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// get an account 
+router.get("/:id/account", async (req, res) => {
+  try {
+      const userData = await User.findByPk(req.params.id);
+      res.render("account", userData);
+  } catch (err) {
+      res.status(500).json(err.message);
+    }
+});
+
 //create a user
 router.post("/", async (req, res) => {
       try {
