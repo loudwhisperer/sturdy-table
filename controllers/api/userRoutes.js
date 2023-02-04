@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const { User, Event, EventGroup } = require("../../models");
+const { User, Event, Eventgroup } = require("../../models");
 const bcrypt = require("bcrypt");
 
+//get all users
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll();
@@ -11,19 +12,23 @@ router.get("/", async (req, res) => {
   }
 })
 
+//get a user by id with any events they are in
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include: [{ model: User}],
-    });
-    if (!userData) {
-      res.status(404).json({ message: "No User Found By This Name" });
+      include:[{model: Event}]});
+    
+      if (!userData) {
+      res.status(404).json({ message: "No User Found" });
       return;
     }
-    res.status(200).json(eventData);
-  } catch (err) {}
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
 });
 
+//create a user
 router.post("/", async (req, res) => {
       try {
     const dbUserData = await User.create({
@@ -91,7 +96,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-
+// update a user by id
 router.put("/:id", async (req, res) => {
   try{ 
     const data = await User.update(req.body, { where: { id: req.params.id } })
@@ -101,6 +106,7 @@ router.put("/:id", async (req, res) => {
   }
 })
 
+// delete a user
 router.delete("/:id", (req, res) => {
   User.destroy({ where: { id: req.params.id } }).then((data) =>
     res.json(data)
@@ -108,7 +114,8 @@ router.delete("/:id", (req, res) => {
 });
 
 
-// for future development as of a freind request and friend list system
+// for future development of a freind request and friend list system
+
 // module.exports.getFriends = async (req, res) => {
 //     try {
 //        const user = await db.User.findOne({
