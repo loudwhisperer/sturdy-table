@@ -177,7 +177,7 @@ const eventEl = [
         location: "chess.com",
         category: "Abstract",
         game_name: "Chess",
-        description: "ACTUAL TEXT",
+        description: "Represents medieval warfare on an 8x8 board with alternating light and dark squares.",
         notes: "Magnus Carlson accepted my challenge, he doesn't stand a chance!",
         host_id: 14
     },
@@ -192,7 +192,7 @@ const eventEl = [
         location: "157 Wooster St, New Haven, CT 06511",
         category: "Abstract",
         game_name: "Machiavelli",
-        description: "ACTUAL TEXT",
+        description: "The defining feature of Machiavelli is being able to make changes to the combinations of cards already on the table.",
         notes: "Weekly game night, learning a new card game this week. Always up to switching, also.",
         host_id: 16
     },
@@ -207,7 +207,7 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Abstract",
         game_name: "7 Wonders Duel",
-        description: "ACTUAL TEXT",
+        description: "Players acquire cards that provide resources or advance their military or scientific development in order to develop a civilization and complete wonders.",
         notes: "Who will challenge me?! Best of 3.",
         host_id: 14
     },
@@ -237,7 +237,7 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Wargame",
         game_name: "Talon",
-        description: "ACTUAL TEXT",
+        description: "Talon is a game of tactical space combat set in a growing universe with its own history and back story. This game introduces battles during the First Talon War between the Terran Confederation and the Talon Empire.",
         notes: "Looking for someone to play this new game with me that I haven't tried.",
         host_id: 13
     },
@@ -252,7 +252,7 @@ const eventEl = [
         location: "201 E Randolph St, Chicago, IL 60602",
         category: "Dungeon Crawler",
         game_name: "Legends of Hellas",
-        description: "ACTUAL TEXT",
+        description: "Players act as heroes trying to defeat mythological monsters. Unlike many other cooperative games, players cannot see each others cards.",
         notes: "Just looking to play some casual games with the friends. Bring what you want!",
         host_id: 14
     },
@@ -282,7 +282,7 @@ const eventEl = [
         location: "2721 S College Ave, Fort Collins, CO 80525",
         category: "Video Game",
         game_name: "Mario Party 7",
-        description: "ACTUAL TEXT",
+        description: "Party game released for the Nintendo GameCube. Mario and the gang, using the MSS Sea Star, go vacationing to locations based on landmarks on Earth. However, Bowser is not invited on the cruise and decides to cause trouble for Mario and his friends.",
         notes: "We have 3 set ups that can allow up to 4 players on each. Controller required to play. Bring your A Game.",
         host_id: 16
     },
@@ -297,7 +297,7 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Worker Placement",
         game_name: "Ultimate Railroads",
-        description: "ACTUAL TEXT",
+        description: "Players compete in an exciting race to build the largest and most advanced railway network. In order to do so, the players appoint their workers to various important tasks.",
         notes: "All Aboard! Toot Toot!",
         host_id: 15
     } 
