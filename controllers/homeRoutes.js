@@ -13,7 +13,11 @@ router.get('/', async (req, res) => {
     const events = eventData.map((event) => event.get({ plain:true }));
     
     // Send handlebars page to user
-    res.render('homepage', { events });
+    res.render("homepage", {
+      events,
+      loggedIn: req.session.loggedIn,
+      userId: req.session.userId
+    });
   } 
   catch(err) {
     console.log(err);
@@ -21,14 +25,17 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET for Login page
+//GET for Login page
 router.get('/login', async (req, res) => {
   try {
-     res.render('login'); 
+     res.render("login", {
+       loggedIn: req.session.loggedIn,
+     }); 
   }
     catch(err) {
       console.log(err);
       res.status(500).json(err);
     }
   });
+
 module.exports = router;

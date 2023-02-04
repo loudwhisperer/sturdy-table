@@ -33,7 +33,11 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/account", async (req, res) => {
   try {
       const userData = await User.findByPk(req.params.id);
-      res.render("account", userData);
+      res.render("account", {
+        userData,
+        loggedIn: req.session.loggedIn,
+        userId: req.session.userId,
+      });
   } catch (err) {
       res.status(500).json(err.message);
     }
@@ -51,7 +55,7 @@ router.post("/", async (req, res) => {
    
     req.session.save(() => {
       req.session.loggedIn = true;
-
+      req.session.userId = data.id;
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -95,7 +99,8 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-      res.status(200).json({ message: "Login succeeded" });
+      req.session.userId = data.id;
+      res.status(200).redirect("/");
     });
   } catch (err) {
     res

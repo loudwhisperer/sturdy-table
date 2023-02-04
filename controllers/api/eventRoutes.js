@@ -36,7 +36,11 @@ router.get("/:id", async (req, res) => {
     const event = eventData.get({ plain: true });
 
     // Send handlebars page to user
-    res.render('event', { event });
+    res.render("event", {
+      event,
+      loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+    });
 
     //res.status(200).json(eventData);
 } catch(err){
