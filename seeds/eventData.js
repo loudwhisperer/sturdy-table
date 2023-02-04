@@ -12,7 +12,7 @@ const eventEl = [
         location: "123 Main St. Fort Collins, CO 80525",
         category: "Campaign/Legacy",
         game_name: "Gloomhaven",
-        description: "Here is a test description. This is only a test. ARTIE! Change this before production!!!!!",
+        description: "ACTUAL TEXT",
         notes: "Hosting up to two games depending on attendance. Typical length is 2 hours. BYOB!",
         host_id: 15
     }, 
@@ -27,6 +27,7 @@ const eventEl = [
         location: "1119 W Drake Rd C-30, Fort Collins, CO 80526",
         category: "Deck Construction",
         game_name: "Magic: The Gathering",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa. Cras et molestie turpis. In dictum imperdiet turpis quis imperdiet.",
         notes: "Entrance cost is $10 at the door. All ages welcome.",
         host_id: 5
     }, 
@@ -41,6 +42,7 @@ const eventEl = [
         location: "smash.gg",
         category: "Video Game",
         game_name: "Super Smash Bros. Ultimate",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa. Cras et molestie turpis. In dictum imperdiet turpis quis imperdiet.",
         notes: "Double Elimination Tournament. 3 Stocks, 8 Minutes, No Hazards.",
         host_id: 9
     },
@@ -54,7 +56,8 @@ const eventEl = [
         max_users: 4,
         location: "4600 Jason St, Denver, CO 80211",
         category: "Eurogame",
-        game_name: "Settlers of Catan",
+        game_name: "Embark on a quest to settle the fair isle of Catan! Guide your brave settlers to victory by using clever trading and development.Use resources (grain, wool, ore, brick, and lumber) to build roads, settlements, and cities, and buy development cards.",
+        description: "ACTUAL TEXT",
         notes: "Snacks and beer will be provided, just bring smiles!",
         host_id: 13
     },
@@ -69,6 +72,7 @@ const eventEl = [
         location: "1418 W Howard St, Chicago, IL 60626",
         category: "Roll-and-Move",
         game_name: "Monopoly",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa.",
         notes: "Get ready to wreck our friendship in this extremely competetive game of Monopoly",
         host_id: 9
     },
@@ -80,9 +84,10 @@ const eventEl = [
         is_public: true,
         is_virtual: false,
         max_users: 6,
-        location: "",
+        location: "123 Main St. Casper, WY 82604",
         category: "Wargame",
         game_name: "Warhammer 40,000",
+        description: "The game is set in the grim darkness of the far future, where mighty armies clash on countless war-torn worlds and Humanity stands alone, beset on all sides by the threats of the heretic, the mutant and the alien. There is no mercy.",
         notes: "Playing old school 40k. Beverages supplied.",
         host_id: 14
     },
@@ -97,6 +102,7 @@ const eventEl = [
         location: "roll20.net",
         category: "Campaign/Legacy",
         game_name: "Dungeons and Dragons 5E",
+        description: "Players form an adventuring party who explore cyber fantasy worlds together as they embark on epic quests and level up in experience",
         notes: "Welcoming new players.",
         host_id: 16
     },
@@ -111,6 +117,7 @@ const eventEl = [
         location: "1119 W Drake Rd C-30, Fort Collins, CO 80526",
         category: "Area Control",
         game_name: "Dune",
+        description: "Players become the leader of one of six great factions. Each wishes to control the most valuable resource in the universe - Melange",
         notes: "Casual game with some friends.",
         host_id: 13
     },
@@ -125,6 +132,7 @@ const eventEl = [
         location: "27 Columbia Way, Las Vegas NV, 88901",
         category: "Roll-and-Move",
         game_name: "Clue",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa. Cras et molestie turpis. In dictum imperdiet turpis quis imperdiet.",
         notes: "Couple of late night games to get ready for the murder mystery movie. Popcorn supplied!",
         host_id: 9
     },
@@ -139,6 +147,7 @@ const eventEl = [
         location: "1600 Pennsylvania Avenue NW, Washington, DC 20500",
         category: "Social Deduction",
         game_name: "Coup",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa. Cras et molestie turpis. In dictum imperdiet turpis quis imperdiet.",
         notes: "Grandpa, can you see this event yet?",
         host_id: 1
     },
@@ -153,6 +162,7 @@ const eventEl = [
         location: "",
         category: "Roll-and-Write",
         game_name: "Next Station: London",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa. Cras et molestie turpis. In dictum imperdiet turpis quis imperdiet.",
         notes: "Trying something new. You know, trains and stuff?",
         host_id: 1
     },
@@ -167,6 +177,7 @@ const eventEl = [
         location: "chess.com",
         category: "Abstract",
         game_name: "Chess",
+        description: "Represents medieval warfare on an 8x8 board with alternating light and dark squares.",
         notes: "Magnus Carlson accepted my challenge, he doesn't stand a chance!",
         host_id: 14
     },
@@ -181,6 +192,7 @@ const eventEl = [
         location: "157 Wooster St, New Haven, CT 06511",
         category: "Abstract",
         game_name: "Machiavelli",
+        description: "The defining feature of Machiavelli is being able to make changes to the combinations of cards already on the table.",
         notes: "Weekly game night, learning a new card game this week. Always up to switching, also.",
         host_id: 16
     },
@@ -195,6 +207,7 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Abstract",
         game_name: "7 Wonders Duel",
+        description: "Players acquire cards that provide resources or advance their military or scientific development in order to develop a civilization and complete wonders.",
         notes: "Who will challenge me?! Best of 3.",
         host_id: 14
     },
@@ -209,6 +222,7 @@ const eventEl = [
         location: "roll20.com",
         category: "Campaign/Legacy",
         game_name: "Betrayal Legacy",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa. Cras et molestie turpis. In dictum imperdiet turpis quis imperdiet.Here is a test description. This is only a test. ARTIE! Change this before production!!!!!",
         notes: "I hear this one is spooooooky",
         host_id: 9
     },
@@ -223,6 +237,7 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Wargame",
         game_name: "Talon",
+        description: "Talon is a game of tactical space combat set in a growing universe with its own history and back story. This game introduces battles during the First Talon War between the Terran Confederation and the Talon Empire.",
         notes: "Looking for someone to play this new game with me that I haven't tried.",
         host_id: 13
     },
@@ -237,6 +252,7 @@ const eventEl = [
         location: "201 E Randolph St, Chicago, IL 60602",
         category: "Dungeon Crawler",
         game_name: "Legends of Hellas",
+        description: "Players act as heroes trying to defeat mythological monsters. Unlike many other cooperative games, players cannot see each others cards.",
         notes: "Just looking to play some casual games with the friends. Bring what you want!",
         host_id: 14
     },
@@ -251,6 +267,7 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Engine Builder",
         game_name: "Race for the Galaxy",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec turpis nec quam congue imperdiet a et purus. Morbi felis eros, aliquam in rhoncus non, tempor sit amet massa. Cras et molestie turpis. In dictum imperdiet turpis quis imperdiet.",
         notes: "Trying to teach new players how to play this awesome game!",
         host_id: 9
     },
@@ -265,6 +282,7 @@ const eventEl = [
         location: "2721 S College Ave, Fort Collins, CO 80525",
         category: "Video Game",
         game_name: "Mario Party 7",
+        description: "Party game released for the Nintendo GameCube. Mario and the gang, using the MSS Sea Star, go vacationing to locations based on landmarks on Earth. However, Bowser is not invited on the cruise and decides to cause trouble for Mario and his friends.",
         notes: "We have 3 set ups that can allow up to 4 players on each. Controller required to play. Bring your A Game.",
         host_id: 16
     },
@@ -279,6 +297,7 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Worker Placement",
         game_name: "Ultimate Railroads",
+        description: "Players compete in an exciting race to build the largest and most advanced railway network. In order to do so, the players appoint their workers to various important tasks.",
         notes: "All Aboard! Toot Toot!",
         host_id: 15
     } 
