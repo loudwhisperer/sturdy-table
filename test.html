@@ -1,0 +1,32 @@
+<div id="content-container">
+
+    <h2 id="displayName">Screen Name</h2id>
+    <form action="/action_page.php">
+        <input type="file" id="profile-pic" name="profile-pic">
+        <p>Choose Profile Picture</p>
+    </form>
+
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Host')">Hosted Events</button>
+        <button class="tablinks" onclick="openCity(event, 'Attend')">Attending Events</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="Host" class="tabcontent">
+        {{#each events as |event|}}
+        <a></a>
+        {{/each}}
+    </div>
+
+    <div id="Attend" class="tabcontent">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+</div>
