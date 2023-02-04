@@ -1,10 +1,10 @@
 <section id="event-container" class="content-container">
   <article data-id="{{event.id}}" class="event-page event-card">
     <h2 id="event-title">{{event.name}}</h2>
-    {{#if event.host_id}}
+    {{#ifEquals event.host_id userId}}
       <button id="edit-event">Edit Event</button>
       <button id="cancel-event">Cancel Event</button>
-    {{/if}}
+    {{/ifEquals}}
     <div id="event-game">
       <span>Game Being Played</span>
       <h3>{{event.game_name}}</h3>
@@ -49,10 +49,10 @@
     {{#if event.is_public}}
       <img src="" alt="private icon">
     {{/if}}
-    {{#if event.host_id}}
+    {{#ifEquals event.host_id userId}}
       <button id="add-attendees">Add Members</button>
     {{else}}
       <button id="leave-event">Leave Event</button>
-    {{/if}}
+    {{/ifEquals}}
   </article>
 </section>

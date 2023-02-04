@@ -6,7 +6,7 @@ const session = require("express-session");
 
 const helpers = require("./utils/helpers");
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helpers});
 
 const sequelize = require("./config/connection");
 
