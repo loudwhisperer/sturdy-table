@@ -54,6 +54,10 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     notes: {
       type: DataTypes.STRING,
       allowNull: true,
