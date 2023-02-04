@@ -24,10 +24,15 @@ If your README is long, add a table of contents to make it easy for users to fin
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
+- [Development](#development-team)
+- [Features](#features)
 
 ## Installation
 
-
+1. Clone the repository from GitHub to your local machine
+2. Run '$ npm i ' in the terminal to install necessary packages
+3. 
+4.
 
 ## Usage
 
@@ -39,13 +44,22 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ## Credits
 
-Our predefined category names came from Simon Castle's blog here: https://www.dicebreaker.com/categories/board-game/how-to/board-game-types-explained
+1. Our predefined category names came from Simon Castle's blog here: https://www.dicebreaker.com/categories/board-game/how-to/board-game-types-explained/
+
 
 ## License
 
 Refer to the LICENSE in the repo for the code. 
 The font (Montserrat) is licensed under the SIL Open Font License (OFL).
 
+## Development Team
+
+<ul>
+    <li><a href="https://github.com/josht-dev">Josh Taylor</a></li>
+    <li><a href="https://github.com/loudwhisperer">Brendan Borowski</a></li>
+    <li><a href="https://github.com/porkchoppy">Christin Carter</a></li>
+    <li><a href="https://github.com/artiecannv">Arthur Cann</a></li>
+</ul>
 
 ## Features
 
@@ -56,12 +70,6 @@ The font (Montserrat) is licensed under the SIL Open Font License (OFL).
     <li>Change account information</li>
 </ul>
 
-## Development Team
-
-<a href="https://github.com/josht-dev">Josh Taylor</a>
-<a href="https://github.com/loudwhisperer">Brendan Borowski</a>
-<a href="https://github.com/porkchoppy">Christin Carter</a>
-<a href="https://github.com/artiecannv">Arthur Cann</a>
 
 
 
