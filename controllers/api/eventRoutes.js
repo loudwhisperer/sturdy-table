@@ -7,7 +7,7 @@ const { User, Event, Friend, Eventgroup } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
-      include: [{ model: User, through: Eventgroup }],
+      include: [{ model: User, as: "party_members" }],
     });
     res.status(200).json(eventData);
   } catch (err) {
@@ -23,9 +23,9 @@ router.get("/:id", async (req, res) => {
         {
           model: User,
           as: 'party_members'
-          //through: Eventgroup,
         },
       ],
+      // TODO: add an attributes to have everything returned in the user object but the encrypted password
     });
     if (!eventData) {
       res.status(404).json({ message: "No Event Found By This Name" });
@@ -78,59 +78,17 @@ router.get("/attending/:id", async (req, res) => {
 })
 
 //update an event and the users in it
-// router.put("/:id", async (req, res) => {
-//   try{
-//   const eUpdate = await Event.update(req.body, {where: {id: req.params.id,}
-//   });
-//   const eGroupFind = await Eventgroup.findAll({
-//     where: { userId: req.params.id },
-//   });
-//   return eGroupFind;
-
-//   } catch(err){
-//     res.status(400).json(err);
-//   }
-
-// })
-
-router.put("/:id", (req, res) => {
-  Event.update(req.body, {
+router.put("/:id", async (req, res) => {
+  try{
+  const data = await Event.update(req.body, {
     where: {
       id: req.params.id,
     },
   })
-    .then((eventgroup) => {
-      return Eventgroup.findAll({ where: { eventId: req.params.id } });
-    })
-    .then((eventGroups) => {
-      // get list of current eventIds
-      const userIds = eventGroups.map(({ userId }) => userId);
-      // create filtered list of new tag_ids
-      const newUserIds = req.body.userIds
-        .filter((userId) => !userIds.includes(userId))
-        .map((userId) => {
-          return {
-            eventId: req.params.id,
-            userId,
-            id,
-          };
-        });
-      // figure out which ones to remove
-      const userIdsToRemove = eventGroups
-        .filter(({ userId }) => !req.body.userIds.includes(userId))
-        .map(({ id }) => id);
-
-      // run both actions
-      return Promise.all([
-        Eventgroup.destroy({ where: { id: userIdsToRemove } }),
-        Eventgroup.bulkCreate(newUserIds),
-      ]);
-    })
-    .then((newUsers) => res.json(newUsers))
-    .catch((err) => {
-      // console.log(err);
-      res.status(400).json(err.message);
-    });
+  res.status(200).json(data);
+} catch(err){
+  res.status(500).json(err);
+}
 });
 
 //delete an event by id

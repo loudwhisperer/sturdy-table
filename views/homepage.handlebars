@@ -1,6 +1,6 @@
 <section id="event-container" class="content-container">
   {{#each events as |event|}}
-    <article class="event-card">
+    <article data-id="{{event.id}}" class="event-card">
       <div class="card-container-title">
         <h2>{{event.name}}</h2>
       </div>

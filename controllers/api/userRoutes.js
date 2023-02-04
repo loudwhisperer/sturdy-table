@@ -1,22 +1,23 @@
 const router = require("express").Router();
 const { User, Event, Eventgroup } = require("../../models");
 const bcrypt = require("bcrypt");
+const auth = require("../../utils/auth");
 
 //get all users
 router.get("/", async (req, res) => {
   try {
-    const userData = await User.findAll();
+    const userData = await User.findAll({attributes: ["id", "email", "displayname"]});
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
 })
 
-//get a user by id with any events they are in
+//get a user by id with any events they are hosting and attending
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include:[{model: Event}]});
+      include:[{model: Event, as: Event.id}]});
     
       if (!userData) {
       res.status(404).json({ message: "No User Found" });
@@ -93,6 +94,17 @@ router.post("/login", async (req, res) => {
         message:
           "An error occurred, please try again. If problem persists roll for initiative",
       });
+  }
+});
+
+//log out 
+router.post("/logout", (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
