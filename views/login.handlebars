@@ -2,14 +2,14 @@
   {{! Card for returning users to enter log in information }}
   <section class="loginCard event-card">
     <h2 class="cardTitle">Login</h2>
-    <form class="loginForms">
+    <form action="/api/users/login" method="post" class="loginForms">
       <div class="loginGrouping">
         <label for="loginEmail">Email:</label>
-        <input type="text" class="formInput" id="loginEmail" />
+        <input type="text" class="formInput" id="loginEmail" name="email"/>
       </div>
       <div class="loginGrouping">
         <label for="loginPassword">Password:</label>
-        <input type="password" class="formInput" id="loginPassword" />
+        <input type="password" class="formInput" id="loginPassword" name="password"/>
       </div>
       <div class="loginGrouping">
         <button class="loginButton" type="submit">Log In</button>
