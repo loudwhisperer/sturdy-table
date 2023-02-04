@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const { User, Event, Eventgroup } = require("../../models");
 const bcrypt = require("bcrypt");
+const auth = require("../../utils/auth");
 
 //get all users
 router.get("/", async (req, res) => {
   try {
-    const userData = await User.findAll();
+    const userData = await User.findAll({attributes: ["id", "email", "displayname"]});
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
@@ -93,6 +94,17 @@ router.post("/login", async (req, res) => {
         message:
           "An error occurred, please try again. If problem persists roll for initiative",
       });
+  }
+});
+
+//log out 
+router.post("/logout", (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
