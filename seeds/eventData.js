@@ -12,6 +12,7 @@ const eventEl = [
         location: "123 Main St. Fort Collins, CO 80525",
         category: "Campaign/Legacy",
         game_name: "Gloomhaven",
+        description: "Here is a test description. This is only a test. ARTIE! Change this before production!!!!!",
         notes: "Hosting up to two games depending on attendance. Typical length is 2 hours. BYOB!",
         host_id: 15
     }, 
