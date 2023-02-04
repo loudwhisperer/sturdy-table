@@ -12,7 +12,8 @@ const eventEl = [
         location: "123 Main St. Fort Collins, CO 80525",
         category: "Campaign/Legacy",
         game_name: "Gloomhaven",
-        notes: "Hosting up to two games depending on attendance. Typical length is 2 hours. BYOB!"
+        notes: "Hosting up to two games depending on attendance. Typical length is 2 hours. BYOB!",
+        host_id: 15
     }, 
     {
         name: "Wednesday Night Draft",
@@ -25,7 +26,8 @@ const eventEl = [
         location: "1119 W Drake Rd C-30, Fort Collins, CO 80526",
         category: "Deck Construction",
         game_name: "Magic: The Gathering",
-        notes: "Entrance cost is $10 at the door. All ages welcome."
+        notes: "Entrance cost is $10 at the door. All ages welcome.",
+        host_id: 5
     }, 
     {
         name: "Saturday Smash Suite",
@@ -38,7 +40,8 @@ const eventEl = [
         location: "smash.gg",
         category: "Video Game",
         game_name: "Super Smash Bros. Ultimate",
-        notes: "Double Elimination Tournament. 3 Stocks, 8 Minutes, No Hazards."
+        notes: "Double Elimination Tournament. 3 Stocks, 8 Minutes, No Hazards.",
+        host_id: 9
     },
     {
         name: "Does Anyone Have Any Sheep?",
@@ -51,7 +54,8 @@ const eventEl = [
         location: "4600 Jason St, Denver, CO 80211",
         category: "Eurogame",
         game_name: "Settlers of Catan",
-        notes: "Snacks and beer will be provided, just bring smiles!"
+        notes: "Snacks and beer will be provided, just bring smiles!",
+        host_id: 13
     },
     {
         name: "Venture Capitalists",
@@ -64,7 +68,8 @@ const eventEl = [
         location: "1418 W Howard St, Chicago, IL 60626",
         category: "Roll-and-Move",
         game_name: "Monopoly",
-        notes: "Get ready to wreck our friendship in this extremely competetive game of Monopoly"
+        notes: "Get ready to wreck our friendship in this extremely competetive game of Monopoly",
+        host_id: 9
     },
     {
         name: "Old School Gamerz Only",
@@ -77,7 +82,8 @@ const eventEl = [
         location: "",
         category: "Wargame",
         game_name: "Warhammer 40,000",
-        notes: "Playing old school 40k. Beverages supplied."
+        notes: "Playing old school 40k. Beverages supplied.",
+        host_id: 14
     },
     {
         name: "Cyber DnD",
@@ -90,7 +96,8 @@ const eventEl = [
         location: "roll20.net",
         category: "Campaign/Legacy",
         game_name: "Dungeons and Dragons 5E",
-        notes: "Welcoming new players."
+        notes: "Welcoming new players.",
+        host_id: 16
     },
     {
         name: "Spice Traders Anonymous",
@@ -103,7 +110,8 @@ const eventEl = [
         location: "1119 W Drake Rd C-30, Fort Collins, CO 80526",
         category: "Area Control",
         game_name: "Dune",
-        notes: "Casual game with some friends."
+        notes: "Casual game with some friends.",
+        host_id: 13
     },
     {
         name: "Who Done It?",
@@ -116,7 +124,8 @@ const eventEl = [
         location: "27 Columbia Way, Las Vegas NV, 88901",
         category: "Roll-and-Move",
         game_name: "Clue",
-        notes: "Couple of late night games to get ready for the murder mystery movie. Popcorn supplied!"
+        notes: "Couple of late night games to get ready for the murder mystery movie. Popcorn supplied!",
+        host_id: 9
     },
     {
         name: "Game with Grandpa",
@@ -129,7 +138,8 @@ const eventEl = [
         location: "1600 Pennsylvania Avenue NW, Washington, DC 20500",
         category: "Social Deduction",
         game_name: "Coup",
-        notes: "Grandpa, can you see this event yet?"
+        notes: "Grandpa, can you see this event yet?",
+        host_id: 1
     },
     {
         name: "Let's Get Off Track",
@@ -142,7 +152,8 @@ const eventEl = [
         location: "",
         category: "Roll-and-Write",
         game_name: "Next Station: London",
-        notes: "Trying something new. You know, trains and stuff?"
+        notes: "Trying something new. You know, trains and stuff?",
+        host_id: 1
     },
     {
         name: "Psychological Warfare",
@@ -155,7 +166,8 @@ const eventEl = [
         location: "chess.com",
         category: "Abstract",
         game_name: "Chess",
-        notes: "Magnus Carlson accepted my challenge, he doesn't stand a chance!"
+        notes: "Magnus Carlson accepted my challenge, he doesn't stand a chance!",
+        host_id: 14
     },
     {
         name: "Game Night",
@@ -168,7 +180,8 @@ const eventEl = [
         location: "157 Wooster St, New Haven, CT 06511",
         category: "Abstract",
         game_name: "Machiavelli",
-        notes: "Weekly game night, learning a new card game this week. Always up to switching, also."
+        notes: "Weekly game night, learning a new card game this week. Always up to switching, also.",
+        host_id: 16
     },
     {
         name: "Duelists!?",
@@ -181,7 +194,8 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Abstract",
         game_name: "7 Wonders Duel",
-        notes: "Who will challenge me?! Best of 3."
+        notes: "Who will challenge me?! Best of 3.",
+        host_id: 14
     },
     {
         name: "Let's Go Exploring!",
@@ -194,7 +208,8 @@ const eventEl = [
         location: "roll20.com",
         category: "Campaign/Legacy",
         game_name: "Betrayal Legacy",
-        notes: "I hear this one is spooooooky"
+        notes: "I hear this one is spooooooky",
+        host_id: 9
     },
     {
         name: "Space Combat Combantant Needed!",
@@ -207,7 +222,8 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Wargame",
         game_name: "Talon",
-        notes: "Looking for someone to play this new game with me that I haven't tried."
+        notes: "Looking for someone to play this new game with me that I haven't tried.",
+        host_id: 13
     },
     {
         name: "Crawling the Dungeons, Friendship Style",
@@ -220,7 +236,8 @@ const eventEl = [
         location: "201 E Randolph St, Chicago, IL 60602",
         category: "Dungeon Crawler",
         game_name: "Legends of Hellas",
-        notes: "Just looking to play some casual games with the friends. Bring what you want!"
+        notes: "Just looking to play some casual games with the friends. Bring what you want!",
+        host_id: 14
     },
     {
         name: "Looking to learn something new?",
@@ -233,7 +250,8 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Engine Builder",
         game_name: "Race for the Galaxy",
-        notes: "Trying to teach new players how to play this awesome game!"
+        notes: "Trying to teach new players how to play this awesome game!",
+        host_id: 9
     },
     {
         name: "Who will be the Super Star?!",
@@ -246,7 +264,8 @@ const eventEl = [
         location: "2721 S College Ave, Fort Collins, CO 80525",
         category: "Video Game",
         game_name: "Mario Party 7",
-        notes: "We have 3 set ups that can allow up to 4 players on each. Controller required to play. Bring your A Game."
+        notes: "We have 3 set ups that can allow up to 4 players on each. Controller required to play. Bring your A Game.",
+        host_id: 16
     },
     {
         name: "Journey to the West",
@@ -259,7 +278,8 @@ const eventEl = [
         location: "en.boardgamearena.com",
         category: "Worker Placement",
         game_name: "Ultimate Railroads",
-        notes: "All Aboard! Toot Toot!"
+        notes: "All Aboard! Toot Toot!",
+        host_id: 15
     } 
 ];
 

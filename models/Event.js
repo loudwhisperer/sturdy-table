@@ -58,6 +58,14 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    host_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
