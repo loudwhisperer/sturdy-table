@@ -7,7 +7,7 @@ const { User, Event, Friend, Eventgroup } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
-      include: [{ model: User, through: Eventgroup }],
+      include: [{ model: User, as: "party_members" }],
     });
     res.status(200).json(eventData);
   } catch (err) {

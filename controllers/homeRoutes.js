@@ -6,10 +6,10 @@ const { Event } = require('../models');
 router.get('/', async (req, res) => {
   try {
     // Get event db data
-    const eventData = await Event.findAll({
+    const eventData = await Event.findAll(
       // Use the below code to add columns from related tables
       // include: [{ model: Table, attributes: ['column name'] }]
-    });
+    );
     const events = eventData.map((event) => event.get({ plain:true }));
     
     // Send handlebars page to user

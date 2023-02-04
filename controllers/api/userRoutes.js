@@ -13,11 +13,11 @@ router.get("/", async (req, res) => {
   }
 })
 
-//get a user by id with any events they are in
+//get a user by id with any events they are hosting and attending
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include:[{model: Event}]});
+      include:[{model: Event, as: Event.id}]});
     
       if (!userData) {
       res.status(404).json({ message: "No User Found" });
