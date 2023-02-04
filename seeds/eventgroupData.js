@@ -28,7 +28,6 @@ const data = [
   },
   {
     approved: true,
-    approved: true,
     userId: 9,
     eventId: 1
   },
