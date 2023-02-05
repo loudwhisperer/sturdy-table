@@ -5,7 +5,8 @@ const getFullEvent = async (eventId) => {
   document.location.href = currentUrl + `api/events/${eventId}`;
 }
 
-// ******Code to hide Account page Attendance Request with no pending*****
+// *****Code only relevant when on the account page*****
+// Code to hide Account page Attendance Request with no pending
 const hidePending = () => {
   const pendingDiv = document.getElementById('pending-invites');
   const events = pendingDiv.getElementsByTagName('div');
@@ -42,7 +43,7 @@ const showTab = (tab) => {
 }
 
 // *****change password*****
-const subNewPassBtn = getElemById("submitButton")
+const subNewPassBtn = (hrefArr[0] === 'account') ? document.getElementById("submitButton"): '';
 const changePassword = async () => {
   try{
   const newPassword = getElemById('confirmPassword').value()
@@ -67,8 +68,10 @@ const changePassword = async () => {
     console.error(err)
   }
 }
+if (hrefArr[0] === 'account') {
+  subNewPassBtn.addEventListener('click', changePassword);
+}
 
-subNewPassBtn.onclick(changePassword);
 
 //functionality for the change password button so it appears on click
 const changePassModal = () => {
@@ -78,7 +81,7 @@ const changePassModal = () => {
 
  //begin functions for changing a display name of a user
 
- const subNewNameBtn = getElemById("newNameButton");
+ const subNewNameBtn = (hrefArr[0] === 'account') ? document.getElementById("newNameButton") : '';
  const changeDisplayName = async () => {
    try {
      const newDisplayName = getElemById("displayname").value();
@@ -102,5 +105,8 @@ const changePassModal = () => {
  };
 
  //runs the function to update user name
- subNewNameBtn.onclick(changeDisplayName);
+ if (hrefArr[0] === 'account') {
+  subNewNameBtn.addEventListener('click', changeDisplayName);
+}
+ 
  
