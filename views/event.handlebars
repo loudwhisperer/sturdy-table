@@ -27,27 +27,27 @@
     <div id="event-attendees">
       <div id="event-attendees-header">
         <span>Attendees:</span>
-        <span>Game Capacity: 0 / {{event.max_users}}</span>
+        <span>Game Capacity: {{get_count event.party_members}} / {{event.max_users}}</span>
         <div>
           {{#each party_members as |member|}}
             <span>{{member.displayname}}</span>
             {{#if member.eventgroup.approved}}
-              <img src="" alt="checkmark">
+              <img src="" alt="checkmark" />
             {{else}}
-              <img src="" alt="question mark">
+              <img src="" alt="question mark" />
             {{/if}}
           {{/each}}
         </div>
       </div>
     </div>
     {{#if event.is_virtual}}
-      <img src="/images/physical-icon.svg" alt="house icon">
+      <img src="/images/physical-icon.svg" alt="house icon" />
     {{else}}
-      <img src="/images/virtual-icon.svg" alt="computer icon">
+      <img src="/images/virtual-icon.svg" alt="computer icon" />
     {{/if}}
     <span id="event-dop">Date of Play: {{event.date}}</span>
     {{#if event.is_public}}
-      <img src="" alt="private icon">
+      <img src="" alt="private icon" />
     {{/if}}
     {{#ifEquals event.host_id userId}}
       <button id="add-attendees">Add Members</button>
