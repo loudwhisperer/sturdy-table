@@ -35,30 +35,37 @@ router.get("/:id", async (req, res) => {
 // get an account
 router.get("/:id/account", async (req, res) => {
   try {
+    // Get user data
     const userData = await User.findByPk(req.params.id);
-    const hostData = await Event.findAll({
-      where: { host_id: req.params.id },
-      attributes: ["userId", "id", "attending", "host_id", "name"],
-      as: "hostInfo",
-    });
-    // const attendingData = await Event.findAll({
-    //   where: User.id === req.params.id,
-    //   include: [
-    //     {
-    //       through: Eventgroup,
-    //       attributes: ["name", "userId", "eventId"],
-    //       as: "attendingInfo",
-    //     },
-    //   ],
-    // });
-    //const events = eventData.map((event) => event.get({ plain: true }));
+    const user = userData.dataValues;
 
-    console.info(hostData);
+    // Get event data for events user is hosting
+    const hostData = await Event.findAll({
+       where: { host_id: req.params.id },
+       attributes: ['id', 'name', 'game_name'] 
+      });
+    const hosting = hostData.map((host) => host.get({ plain: true }));
+
+    // Get event data for events user is attending
+    const attendData = await Eventgroup.findAll({
+      where: { userId: req.params.id }
+    });
+    const attending = attendData.map((attend) => attend.get({ plain: true }));
+
+    // Add event name to the attendData array of objects
+    for (let i = 0; i < attending.length; i++) {
+      const newData = await Event.findOne({
+        raw: true,
+        where: { id: attending[i].eventId },
+        attributes: ['name']
+      });
+      attending[i].eventName = newData.name;
+    }
+
     res.render("account", {
-      //attendingData,
-      hostData,
-      //events,
-      userData,
+      attending,
+      hosting,
+      user,
       loggedIn: req.session.loggedIn,
       userId: req.session.userId,
     });
