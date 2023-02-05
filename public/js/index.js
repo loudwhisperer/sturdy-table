@@ -11,7 +11,6 @@ const hidePending = () => {
   const events = pendingDiv.getElementsByTagName('div');
 
   for (let i = 0; i < events.length; i++) {
-    console.log(events[i]);
     if (events[i].getAttribute('data-pending') === 'false') {
       events[i].classList.add('hidden');
     }
