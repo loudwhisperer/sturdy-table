@@ -1,35 +1,37 @@
 <section id="content-container">
-  <!-- Invitations -->
-  <div>
-    <span>Attendance Requests</span>
+  <!-- Events with pending invite requests -->
+  <div id="pending-invites">
+    <span>Attendance Requests Pending</span>
     {{#each hosting as |event|}}
-      <ul>
-        <li></li>
-      </ul>
+    <div data-pending="{{check_for_pending_invites event}}" class="">
+      <a href="/api/events/{{event.id}}">{{event.name}}</a>
+    </div>
     {{/each}}
   </div>
 
-  <h2 id="displayName">{{userData.displayName}}</h2>
+  <div>
+    <h2 id="displayName">{{userData.displayName}}</h2>
   <img src="" alt="mail device image">
+  </div>
   <!-- Events -->
   <div>
     <!-- Tab links -->
     <div class="tab">
-      <button class="tablinks" onclick="openCity(event, 'Host')">Hosted Events</button>
-      <button class="tablinks" onclick="openCity(event, 'Attend')">Attending Events</button>
+      <button class="tablinks">Hosting</button>
+      <button class="tablinks">Attending</button>
     </div>
-
+    
     <!-- Tab hosting -->
     <div id="Host" class="tabcontent">
-      {{#each hosting as |hostData|}}
-      <a></a>
+      {{#each hosting as |event|}}
+      <a href="/api/events/{{event.id}}">{{event.name}}</a>
       {{/each}}
     </div>
 
     <!-- Tab attending -->
-    <div id="Attend" class="tabcontent">
-      {{#each attending as |attendData|}}
-      <a></a>
+    <div id="Attend" class="tabcontent hidden">
+      {{#each attending as |event|}}
+      <a href="/api/events/{{event.id}}">{{event.name}}</a>
       {{/each}}
     </div>
   </div>
