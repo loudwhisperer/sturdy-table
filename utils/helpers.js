@@ -1,18 +1,20 @@
-// counts users attending an event
 module.exports = {
-    get_count: (arr) => {
-        return arr.length;
-    },
-    ifEquals: (a, b, options) => {
-  if (a === b) {
-    return options.fn(this);
-  }
+  // counts users attending an event
+  get_count: (arr) => {
+    return arr.length;
+  },
+  ifEquals: (a, b, options) => {
+    if (a === b) {
+      return options.fn(this);
+    }
 
-  return options.inverse(this);
-}
-    // check_host: (host_id, userId) =>{
-    //     console.info("helper hit")
-    //     return (host_id === userId)?true:false;
-    // }
+    return options.inverse(this);
+  },
+  // Check array for pending user invites for an event
+  check_for_pending_invites: (event) => {
+    return event.party_members.some((user) => {
+      return (!user.eventgroup.approved)? true:false;
+    });
+  }
 };
 
