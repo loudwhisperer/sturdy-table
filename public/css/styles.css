@@ -110,7 +110,8 @@ aside h3 {
   padding: 1rem .15rem;
 }
 
-.card-container-title h2, .card-container-game h3 {
+.card-container-title h2,
+.card-container-game h3 {
   margin: 0;
 }
 
@@ -130,7 +131,9 @@ aside h3 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.location-icon, .event-date, .event-capacity {
+.location-icon,
+.event-date,
+.event-capacity {
   display: flex;
   align-items: center;
 }
@@ -147,49 +150,60 @@ aside h3 {
   justify-content: end;
 }
 
+/* Event Page Styles */
+.event-page {
+  
+}
+
 /* change password modal styling */
 #ChangePassword {
-    display: flex;
-    min-height: 100%;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9f9f9;
-    font-family: 'Open Sans', sans-serif;
-    visibility: hidden;
-  }
- .cardStyle {
-    width: 500px;
-    border-color: white;
-    background: #fff;
-    padding: 36px 0;
-    border-radius: 4px;
-    margin: 30px 0;
-    box-shadow: 0px 0 2px 0 rgba(0,0,0,0.25);
-  }
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  font-family: 'Open Sans', sans-serif;
+  visibility: hidden;
+}
+
+.cardStyle {
+  width: 500px;
+  border-color: white;
+  background: #fff;
+  padding: 36px 0;
+  border-radius: 4px;
+  margin: 30px 0;
+  box-shadow: 0px 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+
 #signupLogo {
   max-height: 100px;
   margin: auto;
   display: flex;
   flex-direction: column;
 }
-.formTitle{
+
+.formTitle {
   font-weight: 600;
   margin-top: 20px;
   color: #2F2D3B;
   text-align: center;
 }
+
 .inputLabel {
   font-size: 12px;
   color: #555;
   margin-bottom: 6px;
   margin-top: 24px;
 }
-  .inputDiv {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
+
+.inputDiv {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
 input {
   height: 40px;
   font-size: 16px;
@@ -198,27 +212,31 @@ input {
   border: solid 1px #ccc;
   padding: 0 11px;
 }
+
 input:disabled {
   cursor: not-allowed;
   border: solid 1px #eee;
 }
+
 .buttonWrapper {
   margin-top: 40px;
 }
-  .submitButton {
-    width: 70%;
-    height: 40px;
-    margin: auto;
-    display: block;
-    color: #fff;
-    background-color: #065492;
-    border-color: #065492;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-  }
+
+.submitButton {
+  width: 70%;
+  height: 40px;
+  margin: auto;
+  display: block;
+  color: #fff;
+  background-color: #065492;
+  border-color: #065492;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 .submitButton:disabled,
 button[disabled] {
   border: 1px solid #cccccc;
@@ -240,9 +258,15 @@ button[disabled] {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
 /* end change password modal styling */
 
 /* Responsive Styles */
