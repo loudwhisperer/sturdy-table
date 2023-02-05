@@ -11,11 +11,9 @@ module.exports = {
     return options.inverse(this);
   },
   // Check array for pending user invites for an event
-  check_for_pending_invites: (arr) => {
-    return arr.some((event) => {
-      return event.party_members.some((user) => {
-        return (!user.eventgroup.approved)? true:false;
-      });
+  check_for_pending_invites: (event) => {
+    return event.party_members.some((user) => {
+      return (!user.eventgroup.approved)? true:false;
     });
   }
 };
