@@ -1,8 +1,8 @@
 <section id="content-container">
   <!-- Invitations -->
   <div>
-    <span>Invitations</span>
-    {{#each }}
+    <span>Attendance Requests</span>
+    {{#each hosting as |event|}}
       <ul>
         <li></li>
       </ul>
@@ -21,14 +21,14 @@
 
     <!-- Tab hosting -->
     <div id="Host" class="tabcontent">
-      {{#each hostData as |hosting|}}
+      {{#each hosting as |hostData|}}
       <a></a>
       {{/each}}
     </div>
 
     <!-- Tab attending -->
     <div id="Attend" class="tabcontent">
-      {{#each attendingData as |attending|}}
+      {{#each attending as |attendData|}}
       <a></a>
       {{/each}}
     </div>
