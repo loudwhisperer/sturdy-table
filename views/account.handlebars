@@ -1,28 +1,37 @@
-<div id="content-container">
+<section id="content-container">
+  <!-- Invitations -->
+  <div>
+    <span>Invitations</span>
+    {{#each }}
+      <ul>
+        <li></li>
+      </ul>
+    {{/each}}
+  </div>
 
-    <h2 id="displayName">Screen Name</h2id>
-    <form action="/action_page.php">
-        <input type="file" id="profile-pic" name="profile-pic">
-        <p>Choose Profile Picture</p>
-    </form>
-
+  <h2 id="displayName">{{userData.displayName}}</h2>
+  <img src="" alt="mail device image">
+  <!-- Events -->
+  <div>
     <!-- Tab links -->
     <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'Host')">Hosted Events</button>
-        <button class="tablinks" onclick="openCity(event, 'Attend')">Attending Events</button>
+      <button class="tablinks" onclick="openCity(event, 'Host')">Hosted Events</button>
+      <button class="tablinks" onclick="openCity(event, 'Attend')">Attending Events</button>
     </div>
 
-    <!-- Tab content -->
+    <!-- Tab hosting -->
     <div id="Host" class="tabcontent">
-        {{#each events as |event|}}
-        <a></a>
-        {{/each}}
+      {{#each hostData as |hosting|}}
+      <a></a>
+      {{/each}}
     </div>
 
+    <!-- Tab attending -->
     <div id="Attend" class="tabcontent">
-      {{#each events as |event|}}
-        <a></a>
-        {{/each}}
+      {{#each attendingData as |attending|}}
+      <a></a>
+      {{/each}}
     </div>
-
-</div>
+  </div>
+  
+</section>
