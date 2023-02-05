@@ -140,12 +140,54 @@ router.post("/logout", (req, res) => {
 });
 
 // update a user by id
-router.put("/:id", async (req, res) => {
+router.put("/:id/account", async (req, res) => {
   try {
-    const data = await User.update(req.body, { where: { id: req.params.id } });
+    const data = await User.update(req.body, {
+      where: { id: req.params.id },
+      include: ["email", "displayname"],
+    });
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.put("/:id/changepass", async (req, res) => {
+  try {
+
+      const userDb = await User.findOne({
+        where: {
+          id: req.params.id,
+        },
+      });
+    const data = await User.update(req.body, {
+      where: { id: req.params.id },
+      individualHooks: true,
+    });
+
+    const validPassword =  (updatedUserData) => {
+        updatedUserData.password = bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
+        return updatedUserData;
+      }
+      
+    if (!validPassword) {
+      res.status(404).json({
+        message:
+          "You roll a one on you intelligence check, please provide a valid password.",
+      });
+      return;
+    }
+    // res.render("changepassword", {
+    //   data,
+    //   loggedIn: req.session.loggedIn,
+    //   userId: req.session.userId,
+    // });
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json(err.message)
   }
 });
 
