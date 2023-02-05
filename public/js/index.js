@@ -24,3 +24,19 @@ hrefArr.reverse();
 if (hrefArr[0] === 'account') {
   hidePending();
 }
+
+// *****Account page tab code*****
+const showTab = (tab) => {
+  // Get tab classes
+  const hostClasses = document.getElementById('host').className.split(' ');
+  const attendClasses = document.getElementById('attend').className.split(' ');
+
+  if (tab === 'host' && hostClasses.includes('hidden')) {
+    document.getElementById('host').classList.toggle('hidden');
+    document.getElementById('attend').classList.toggle('hidden');
+  } 
+  if (tab === 'attend' && attendClasses.includes('hidden')) {
+    document.getElementById('host').classList.toggle('hidden');
+    document.getElementById('attend').classList.toggle('hidden');
+  }
+}
