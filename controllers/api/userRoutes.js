@@ -42,9 +42,25 @@ router.get("/:id/account", async (req, res) => {
     // Get event data for events user is hosting
     const hostData = await Event.findAll({
        where: { host_id: req.params.id },
-       attributes: ['id', 'name', 'game_name'] 
+       attributes: ['id', 'name', 'game_name'],
+       include: [
+        {
+          model: User,
+          as: 'party_members'
+        },
+      ] 
       });
     const hosting = hostData.map((host) => host.get({ plain: true }));
+
+    // Format the data sent over
+    for (let i = 0; i < hosting.length; i++) {
+      let members = hosting[i].party_members;
+      for (let z = 0; z < members.length; z++) {
+        delete members[z].id;
+        delete members[z].email;
+        delete members[z].password;
+      }
+    }
 
     // Get event data for events user is attending
     const attendData = await Eventgroup.findAll({
