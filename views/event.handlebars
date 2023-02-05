@@ -52,7 +52,13 @@
     {{#ifEquals event.host_id userId}}
       <button id="add-attendees">Add Members</button>
     {{else}}
-      <button id="leave-event">Leave Event</button>
+      {{#if loggedIn}}
+        {{#each event.party_members as |member|}}
+          {{#ifEquals member.userId userId}}
+            <button id="leave-event">Leave Event</button>
+          {{/ifEquals}}
+        {{/each}}
+      {{/if}}
     {{/ifEquals}}
   </article>
 </section>
