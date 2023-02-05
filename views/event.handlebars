@@ -1,0 +1,58 @@
+<section id="event-container" class="content-container">
+  <article data-id="{{event.id}}" class="event-page event-card">
+    <h2 id="event-title">{{event.name}}</h2>
+    {{#ifEquals event.host_id userId}}
+      <button id="edit-event">Edit Event</button>
+      <button id="cancel-event">Cancel Event</button>
+    {{/ifEquals}}
+    <div id="event-game">
+      <span>Game Being Played</span>
+      <h3>{{event.game_name}}</h3>
+    </div>
+    <div id="event-description">
+      <p>{{event.description}}</p>
+    </div>
+    <div id="event-notes">
+      <span>Notes:</span>
+      <p>{{event.notes}}</p>
+    </div>
+    <div id="event-location">
+      {{#if event.is_virtual}}
+        <span>Link:</span>
+      {{else}}
+        <span>Location:</span>
+      {{/if}}
+      <span>{{event.location}}</span>
+    </div>
+    <div id="event-attendees">
+      <div id="event-attendees-header">
+        <span>Attendees:</span>
+        <span>Game Capacity: {{get_count event.party_members}} / {{event.max_users}}</span>
+        <div>
+          {{#each party_members as |member|}}
+            <span>{{member.displayname}}</span>
+            {{#if member.eventgroup.approved}}
+              <img src="" alt="checkmark" />
+            {{else}}
+              <img src="" alt="question mark" />
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    {{#if event.is_virtual}}
+      <img src="/images/physical-icon.svg" alt="house icon" />
+    {{else}}
+      <img src="/images/virtual-icon.svg" alt="computer icon" />
+    {{/if}}
+    <span id="event-dop">Date of Play: {{event.date}}</span>
+    {{#if event.is_public}}
+      <img src="" alt="private icon" />
+    {{/if}}
+    {{#ifEquals event.host_id userId}}
+      <button id="add-attendees">Add Members</button>
+    {{else}}
+      <button id="leave-event">Leave Event</button>
+    {{/ifEquals}}
+  </article>
+</section>

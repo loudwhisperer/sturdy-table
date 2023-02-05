@@ -7,19 +7,19 @@
   <title>The Table</title>
   <!-- link for font, licensed under the SIL Open Font License (OFL) -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <link rel="stylesheet" href="./css/reset.ss">
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <header>
-    <img class="logo" src="./images/thetable_logo.svg" alt="The Table Logo">
+    <img class="logo" src="/images/thetable_logo.svg" alt="The Table Logo">
     <nav>
       <div class="nav-links">
         <a href="/">Home</a>
         {{#if loggedIn}}
-          <a href="/account">Account</a>
+          <a href="/api/users/{{userId}}/account">Account</a>
           <a href="/create-event">Host Event</a>
-          <a href="/logout">Logout</a>
+          <a href="/api/users/logout">Logout</a>
         {{else}}
           <a href="/login">Login</a>
         {{/if}}
@@ -77,6 +77,6 @@
   </aside>
   {{{ body }}}
 
-
+  <script src="/js/index.js"></script>
 </body>
 </html>

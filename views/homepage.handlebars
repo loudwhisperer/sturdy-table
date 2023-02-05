@@ -1,6 +1,10 @@
 <section id="event-container" class="content-container">
   {{#each events as |event|}}
-    <article class="event-card">
+    <article
+      data-id="{{event.id}}"
+      class="event-card"
+      onclick="getFullEvent({{event.id}})"
+    >
       <div class="card-container-title">
         <h2>{{event.name}}</h2>
       </div>
@@ -11,16 +15,16 @@
       <div class="card-container-footer">
         <div class="location-icon">
           {{#if event.is_virtual}}
-            <img src="./images/virtual-icon.svg" alt="virtual link">
+            <img src="./images/virtual-icon.svg" alt="virtual link" />
           {{else}}
-            <img src="./images/physical-icon.svg" alt="physical location">
+            <img src="./images/physical-icon.svg" alt="physical location" />
           {{/if}}
         </div>
         <div class="event-date">
           <span>{{event.date}}</span>
         </div>
         <div class="event-capacity">
-          <span> 00 / {{event.max_users}}</span>
+          <span> {{get_count event.party_members}} / {{event.max_users}}</span>
         </div>
       </div>
     </article>
