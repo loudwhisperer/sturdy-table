@@ -17,21 +17,21 @@
   <div>
     <!-- Tab links -->
     <div class="tab">
-      <button class="tablinks">Hosting</button>
-      <button class="tablinks">Attending</button>
+      <button class="tablinks" onclick="showTab('host')">Hosting</button>
+      <button class="tablinks" onclick="showTab('attend')">Attending</button>
     </div>
     
     <!-- Tab hosting -->
-    <div id="Host" class="tabcontent">
+    <div id="host" class="tabcontent">
       {{#each hosting as |event|}}
       <a href="/api/events/{{event.id}}">{{event.name}}</a>
       {{/each}}
     </div>
 
     <!-- Tab attending -->
-    <div id="Attend" class="tabcontent hidden">
+    <div id="attend" class="tabcontent hidden">
       {{#each attending as |event|}}
-      <a href="/api/events/{{event.id}}">{{event.name}}</a>
+      <a href="/api/events/{{event.id}}">{{event.eventName}}</a>
       {{/each}}
     </div>
   </div>
