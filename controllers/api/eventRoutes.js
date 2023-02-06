@@ -155,8 +155,14 @@ router.put('/approved/:eventId/:otherId', async (req, res) => {
     const data = await Eventgroup.update(req.body, {
       where: { id: getGroupId.id }
     });
-
-    // TODO - Added notification email to user
+      const userData = await User.findByPk(req.params.otherId, { raw: true });
+      const eventData = await Event.findByPk(req.params.eventId, { raw: true });
+    notify(
+      `${userData.email}`,
+      `Hello ${userData.displayname} you have been approved by host to join ${eventData.name}`,
+      `Go check it out on your account page`
+    );
+    
 
     res.status(200).json(data);
   }
