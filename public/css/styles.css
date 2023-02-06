@@ -161,6 +161,12 @@ aside h3 {
   justify-content: end;
 }
 
+#event-attendees img {
+  width: 20px;
+  height: 20px;
+  display: inline;
+}
+
 /* Responsive Styles */
 /* Tablet - 720-1023 */
 @media screen and (max-width: 1023px) {}
