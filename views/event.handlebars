@@ -51,7 +51,8 @@
       <img src="/images/private-icon.svg" alt="private icon" />
     {{/if}}
     {{#ifEquals event.host_id userId}}
-      <button id="add-attendees">Add Members</button>
+      <button id="add-attendees">Add Member</button>
+      <input type="text" name="addUser" id="addUser">
     {{else}}
       {{#if loggedIn}}
         {{#each event.party_members as |member|}}
