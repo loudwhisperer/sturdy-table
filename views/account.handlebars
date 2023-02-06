@@ -1,4 +1,4 @@
-<section class="content-container event-card">
+<section id="account-page" data-id="{{user.id}}" class="content-container event-card">
   <!-- Events with pending invite requests -->
   <div id="pending-invites">
     <span>Attendance Requests Pending</span>
@@ -85,8 +85,8 @@
         </h2>
 
         <div class="inputDiv">
-          <label class="inputLabel" for="password">Change Display Name</label>
-          <input type="password" id="displayname" name="password" required>
+          <label class="inputLabel" for="displayname">Change Display Name</label>
+          <input type="text" id="displayname" name="displayname" required>
         </div>
 
         <div class="buttonWrapper">
