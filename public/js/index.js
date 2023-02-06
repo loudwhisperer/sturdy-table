@@ -117,15 +117,17 @@ const changeNameModal = () => {
 
 // *****Logout*****
 const logout = async () => {
-  try {
-    await fetch ('/api/users/logout', {
-    method: 'POST',
+  const response = await fetch("/api/users/logout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
   });
-  } 
-  catch(err) {
-    // TODO - Put error message here!!
+
+  if (response.ok) {
+    document.location.replace("/");
+  } else {
+    console.error(err);
   }
-}
+};
 
 
 
