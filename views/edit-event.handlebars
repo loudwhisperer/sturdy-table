@@ -1,4 +1,4 @@
-<section data-id="{{event.id}}" class="content-container">
+<section data-id="{{event.id}}" id="event-section" class="content-container">
   <div class="event-card create-event-page">
     <h1>Start a Game?</h1>
     <input type="text" placeholder="Name the Event" id="eventTitle" value="{{event.name}}"></input>
@@ -90,7 +90,7 @@
     <div class="inviteOthers">
       <label for="addAttendee">Add Attendees</label>
       <input type="text" name="addAttendee" id="addAttendee" placeholder="attendee username">
-      <button id="addAttendeeBtn">Add</button>
+      <button onclick="addAttendee()" id="addAttendeeBtn">Add</button>
     </div>
     <div class="attendees">
       {{#each event.party_members as |member|}}
