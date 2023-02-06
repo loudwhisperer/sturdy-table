@@ -115,4 +115,18 @@ const changeNameModal = () => {
   modal.classList.toggle('hidden');
 };
 
+// *****Logout*****
+const logout = async () => {
+  try {
+    await fetch ('/api/users/logout', {
+    method: 'POST',
+  });
+  } 
+  catch(err) {
+    // TODO - Put error message here!!
+  }
+}
+
+
+
 // TODO - REFACTOR!!!
