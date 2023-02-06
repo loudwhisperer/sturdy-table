@@ -36,8 +36,7 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/account", async (req, res) => {
   try {
     // Get user data
-    const userData = await User.findByPk(req.params.id);
-    const user = userData.dataValues;
+    const user = await User.findByPk(req.params.id, { raw: true });
 
     // Get event data for events user is hosting
     const hostData = await Event.findAll({
