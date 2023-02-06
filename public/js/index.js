@@ -119,6 +119,113 @@ const logout = async () => {
   }
 };
 
+// *****Edit Event Btn*****
+const editEvent = async () => {
+  try {
+    const id = document.getElementById('event-section').getAttribute('data-id');
+    const response = await fetch(`/api/events/${id}/edit-event`, {
+      method: 'GET',
+      headers: { "Content-Type": "application/json" }
+    });
 
+    if (response.ok) {
+      document.location.replace(`/api/events/${id}/edit-event`);
+    }
+
+  }
+  catch (err) { console.error(err.message); }
+}
+
+// *****Cancel Event Btn*****
+// TODO - Add confirmation on button press
+const cancelEvent = async () => {
+  try {
+    const id = document.getElementById('event-section').getAttribute('data-id');
+    const response = await fetch(`/api/events/${id}`, {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (response.ok) {
+      document.location.replace(`/`);
+    }
+
+  }
+  catch (err) { console.error(err.message); }
+}
+
+// *****Add User Event Btn*****
+const addAttendee = async () => {
+  try {
+    const eventId = document.getElementById('event-section').getAttribute('data-id');
+    const newAttendee = document.getElementById('addAttendee').value;
+    const getUser = await fetch(`/api/events/find-user/${newAttendee}`, {
+      method: 'GET',
+      headers: {"Content-Type": "application/json"},
+    });
+    let userData = await getUser.json();
+
+    if (!userData.id) {
+      alert('Could not find that user!');
+      return;
+    }
+
+    // Add the user to the event!
+    const addAttendeeToEvent = await fetch('/api/events/attending', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        approved: true,
+        userId: `${userData.id}`,
+        eventId: `${eventId}`
+      }),
+    });
+
+    // Reload the current page
+    if (addAttendeeToEvent.ok) {
+      location.reload();
+    }
+  }
+  catch (err) { console.error(err.message); }
+}
+
+// *****Add User Event Btn*****
+const removeAttendee = async (userDiv) => {
+  try {
+    const eventId = document.getElementById('event-section').getAttribute('data-id');
+    const url = `/api/events/attending/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const deleteUser = await fetch(url, {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (deleteUser.ok) {
+      location.reload();
+    }
+  } 
+  catch (err) { console.error(err.message); }
+}
+
+// *****Approve User Event Btn*****
+const approveAttendee = async (userDiv) => {
+  try {
+    const eventId = document.getElementById('event-section').getAttribute('data-id');
+    const url = `/api/events/approved/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const approveUser = await fetch(url, {
+      method: 'PUT',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        approved: true,
+        userId: `${userDiv.getAttribute('data-id')}`,
+        eventId: `${eventId}`
+      })
+    });
+
+    if (approveUser.ok) {
+      location.reload();
+    }
+  } 
+  catch (err) { console.error(err.message); }
+}
 
 // TODO - REFACTOR!!!

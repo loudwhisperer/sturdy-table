@@ -1,9 +1,9 @@
-<section id="event-page-container" class="content-container">
+<section data-id="{{event.id}}" id="event-section" class="content-container">
   <article data-id="{{event.id}}" class="event-page event-card">
     <h2 id="event-title">{{event.name}}</h2>
     {{#ifEquals event.host_id userId}}
-      <button id="edit-event">Edit Event</button>
-      <button id="cancel-event">Cancel Event</button>
+      <button onclick="editEvent()">Edit Event</button>
+      <button onclick="cancelEvent()">Cancel Event</button>
     {{/ifEquals}}
     <div id="event-game">
       <span>Game Being Played</span>
@@ -30,13 +30,15 @@
         <span>Game Capacity: {{get_count event.party_members}} / {{event.max_users}}</span>
         <div>
           {{#each event.party_members as |member|}}
-            <span data-id="member.id">{{member.displayname}}</span>
-            {{#if member.eventgroup.approved}}
-              <img src="/images/check-icon.svg" alt="checkmark" />
-            {{else}}
-              <img src="/images/question-icon.svg" alt="question mark" />
-            {{/if}}
-            <img src="/images/x-icon.svg" alt="x icon">
+            <div data-id="{{member.id}}">
+              <span>{{member.displayname}}</span>
+              {{#if member.eventgroup.approved}}
+                <img src="/images/check-icon.svg" alt="checkmark" />
+              {{else}}
+                <img src="/images/question-icon.svg" alt="question mark" onclick="approveAttendee(this.parentElement)"/>
+              {{/if}}
+              <img src="/images/x-icon.svg" alt="x icon" onclick="removeAttendee(this.parentElement)"/>
+            </div>
           {{/each}}
         </div>
       </div>
@@ -51,8 +53,8 @@
       <img src="/images/private-icon.svg" alt="private icon" />
     {{/if}}
     {{#ifEquals event.host_id userId}}
-      <button id="add-attendees">Add Member</button>
-      <input type="text" name="addUser" id="addUser">
+      <button onclick="addAttendee()">Add Member</button>
+      <input type="text" name="addUser" id="addAttendee">
     {{else}}
       {{#if loggedIn}}
         {{#each event.party_members as |member|}}

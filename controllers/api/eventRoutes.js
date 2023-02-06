@@ -2,27 +2,58 @@ const router = require("express").Router();
 const { truncate } = require("lodash");
 const { User, Event, Eventgroup } = require("../../models");
 const notify = require("../../utils/email-notification");
-//frontend route that is expecting a res.render of a handlebars component
 
-//get all events
-/*
-router.get("/", async (req, res) => {
+// Get a user by displayname to add to an event
+router.get('/find-user/:displayname', async (req, res) => {
   try {
-    const eventData = await Event.findAll({
-      include: [{ model: User, as: "party_members" }],
+    const user = await User.findOne({
+      raw: true,
+      where: { displayname: req.params.displayname}
     });
-    res.status(200).json(eventData);
-  } catch (err) {
+    if (!user) {
+      res.status(404).json({ message: "No User Found" });
+      return;
+    }
+    res.status(200).json(user);
+  } 
+  catch(err) {res.status(500).json(err);}
+});
+
+// Get /create-event page
+router.get('/create-event', async (req, res) => {
+  try {
+    res.render('create-event', {
+      loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+    });
+  } 
+  catch(err) {
     res.status(500).json(err);
   }
 });
-*/
 
-// Get /create-event page
-router.get('/create-event', async(req, res) => {
+// GET route to the edit-event page
+router.get('/:id/edit-event', async (req, res) => {
   try {
+    const eventData = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          as: "party_members",
+        },
+      ],
+      // TODO: add an attributes to have everything returned in the user object but the encrypted password
+    });
+    if (!eventData) {
+      res.status(404).json({ message: "No Event Found By This Name" });
+      return;
+    }
 
-    res.render('create-event', {
+    // Turn db data into handlebars plain obj
+    const event = eventData.get({ plain: true });
+    
+    res.render('edit-event', {
+      event,
       loggedIn: req.session.loggedIn,
       userId: req.session.userId,
     });
@@ -112,6 +143,26 @@ router.get("/attending/:id", async (req, res) => {
   }
 });
 
+// Approve a user for an event
+router.put('/approved/:eventId/:otherId', async (req, res) => {
+  try {
+    const getParty = await Eventgroup.findAll({
+      raw: true, 
+      where: {eventId: req.params.eventId}
+    });
+    const getGroupId = getParty.find((user) => {return user.userId == req.params.otherId});
+
+    const data = await Eventgroup.update(req.body, {
+      where: { id: getGroupId.id }
+    });
+
+    // TODO - Added notification email to user
+
+    res.status(200).json(data);
+  }
+  catch(err) {res.status(500).json(err.message);}
+});
+
 //update an event
 router.put("/:id", async (req, res) => {
   try {
@@ -158,7 +209,7 @@ router.delete("/attending/:id/:otherId", async (req, res) => {
   const groupArr = findEventGroup.find((user) => {
     return user.userId == req.params.otherId
   })
-  console.info(groupArr.id)
+
   const delUser = await Eventgroup.destroy(
     { where: { id: groupArr.id } }
   );

@@ -1,7 +1,7 @@
-<section class="content-container">
+<section data-id="{{event.id}}" id="event-section" class="content-container">
   <div class="event-card create-event-page">
     <h1>Start a Game?</h1>
-    <input type="text" placeholder="Name the Event" id="eventTitle"></input>
+    <input type="text" placeholder="Name the Event" id="eventTitle" value="{{event.name}}"></input>
     <!-- event photo input 
     <form action="/action_page.php">
       <input type="file" id="eventPic" name="eventPic">
@@ -18,46 +18,56 @@
       <option value="na">N/A</option>
     </select>
     -->
-    <input type="text" placeholder="Add Custom Game" id="gameCustomChoice"></input>
-    <textarea name="addDescription" id="eventDescription" cols="30" rows="10" placeholder="Event Description"></textarea>
-    <textarea name="addNotes" id="eventNotes" cols="30" rows="10"placeholder="Add Notes (Example: BYOB)" ></textarea>
+    <input type="text" placeholder="Add Custom Game" id="gameCustomChoice" value="{{event.game_name}}"></input>
+    <textarea name="addDescription" id="eventDescription" cols="30" rows="10" placeholder="Event Description">{{event.description}}</textarea>
+    <textarea name="addNotes" id="eventNotes" cols="30" rows="10"placeholder="Add Notes (Example: BYOB)" >{{event.notes}}</textarea>
     <!-- Calendar for choosing the date -->
     <!-- TODO: Placeholder for the date -->
     <!-- TODO: Placeholder for the time -->
     <fieldset id="eventDate">
       <legend>Pick the Date:</legend>
       <label for="eventDate">
-        <input id="eventDate" type="date" min="2023-02-01">
+        <input id="eventDate" type="date" min="2023-02-01" value="{{event.date}}">
       </label>
     </fieldset>
     <fieldset id="eventTime">
       <legend>Pick the Time:</legend>
       <label for="eventTime">
-        <input id="eventTime" type="time">
+        <input id="eventTime" type="time" value="{{event.time_start}}">
       </label>
     </fieldset>
 
     <div id="event-length-div">
       <label for="eventLength">How long is this Event in minutes?</label>
-      <input type="number" name="eventLength" id="eventLength" min="30" step="15" value="60">
+      <input type="number" name="eventLength" id="eventLength" min="30" step="15" value="{{event.est_length}}">
     </div>
 
     <label for="pub-priv">Public or Private?</label>
     <select name="pub-priv" id="pub-priv">
-      <option value="public">Public</option>
-      <option value="private">Private</option>
+      {{#if event.is_public}}
+        <option value="public" selected>Public</option>
+        <option value="private">Private</option>
+      {{else}}
+        <option value="public">Public</option>
+        <option value="private" selected>Private</option>
+      {{/if}}
     </select>
 
     <label for="virt-irl">Virtual or In Person?</label>
     <select name="virt-irl" id="virt-irl">
-      <option value="virtual">Virtual</option>
-      <option value="inPerson">In Person</option>
+      {{#if is_virtual}}
+        <option value="virtual" selected>Virtual</option>
+        <option value="inPerson">In Person</option>
+      {{else}}
+        <option value="virtual" selected>Virtual</option>
+        <option value="inPerson">In Person</option>
+      {{/if}}
     </select>
 
 
     <fieldset id="addressInput">
       <h4>Enter Address of the Event or Virtual link:</h4>
-      <textarea name="address-link" id="address-link" cols="30" rows="5"></textarea>
+      <textarea name="address-link" id="address-link" cols="30" rows="5">{{event.location}}</textarea>
       <!-- TODO - Impliment proper address fields-->
       <!--
       <p>Street Address</p>
@@ -74,16 +84,24 @@
     </fieldset>
     <div>
       <label for="capacity">Max Capacity of event?</label>
-      <input type="number" name="capacity" id="capacity" min="1" step="1" value="4">
+      <input type="number" name="capacity" id="capacity" min="1" step="1" value="{{event.max_users}}">
     </div>
 
     <div class="inviteOthers">
       <label for="addAttendee">Add Attendees</label>
       <input type="text" name="addAttendee" id="addAttendee" placeholder="attendee username">
-      <button id="addAttendeeBtn">Add</button>
+      <button onclick="addAttendee()" id="addAttendeeBtn">Add</button>
     </div>
     <div class="attendees">
-      <span>User Name Here</span>
+      {{#each event.party_members as |member|}}
+        <span data-userId="{{member.id}}">{{member.displayname}}</span>
+        {{#if member.eventgroup.approved}}
+          <img src="/images/check-icon.svg" alt="checkmark icon">
+        {{else}}
+          <img src="/images/question-icon.svg" alt="question mark icon">
+        {{/if}}
+        <img src="/images/x-icon.svg" alt="x icon">
+      {{/each}}
     </div>
 
     <button id="createEvent" type="submit">Create!</button>
