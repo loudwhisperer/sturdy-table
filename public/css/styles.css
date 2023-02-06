@@ -34,8 +34,8 @@ header {
 }
 
 .logo {
-  width: 16rem;
-  height: 12rem;
+  width: 18.5rem;
+  height: 11rem;
   padding: .5rem 0;
 /*  border-radius: var(--border-radius);*/
   background-color: var(--color-secondary);
@@ -101,6 +101,10 @@ aside h3 {
 /* Main Content Styling */
 .content-container {
   margin: 9.5rem 1rem 1rem 17rem;
+}
+
+.content-container h1 {
+  font-size: 2rem;
 }
 
 /* Event Card Styles */
