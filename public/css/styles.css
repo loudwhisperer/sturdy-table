@@ -30,14 +30,14 @@ header {
   background-color: var(--color-secondary);
   color: var(--color-on-secondary);
   display: flex;
-  border-bottom-right-radius: var(--border-radius);
+  /*border-bottom-right-radius: var(--border-radius);*/
 }
 
 .logo {
-  width: 16rem;
-  height: 12rem;
+  width: 14rem;
+  height: 9rem;
   padding: .5rem 0;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius)
   background-color: var(--color-secondary);
 }
 
@@ -50,8 +50,22 @@ nav {
 }
 
 .nav-links {
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 400;
+  display: flex;
+  gap: 25px;
+  text-shadow: 1px 1px var(--color-bg);
+  padding: 10px;
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--color-bg);
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--color-on-secondary);
 }
 
 #nav-filter {
@@ -59,7 +73,7 @@ nav {
 }
 
 #nav-filter button {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 400;
   text-transform: uppercase;
   border-radius: var(--border-radius);
@@ -69,13 +83,11 @@ nav {
 /* Friends List Styles */
 aside {
   width: 16rem;
-  /*height: 80%;*/
-  height: 100%;
+  height: 80%;
   float: left;
   position: fixed;
   bottom: 1rem;
-  /*z-index: 2;*/
-  z-index: -1;
+  z-index: 2;
   background-color: var(--color-secondary);
   border-radius: var(--border-radius);
 }
@@ -89,6 +101,9 @@ aside h3 {
 /* Main Content Styling */
 .content-container {
   margin: 9.5rem 1rem 1rem 17rem;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Event Card Styles */
@@ -102,7 +117,11 @@ aside h3 {
   background-color: var(--color-primary);
   color: var(--color-on-primary);
   border-radius: var(--border-radius);
-  padding: .5rem;
+  padding: 1rem;
+}
+
+.loginCard {
+  margin-bottom: 2rem;
 }
 
 .card-container-title {
@@ -112,8 +131,7 @@ aside h3 {
   padding: 1rem .15rem;
 }
 
-.card-container-title h2,
-.card-container-game h3 {
+.card-container-title h2, .card-container-game h3 {
   margin: 0;
 }
 
@@ -133,9 +151,7 @@ aside h3 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.location-icon,
-.event-date,
-.event-capacity {
+.location-icon, .event-date, .event-capacity {
   display: flex;
   align-items: center;
 }
@@ -152,128 +168,11 @@ aside h3 {
   justify-content: end;
 }
 
-/* Event Page Styles */
-.event-page {
-  
+#event-attendees img {
+  width: 20px;
+  height: 20px;
+  display: inline;
 }
-
-/* Create Event Page Styles */
-.create-event-page {
-  display: block;
-}
-
-/* change password modal styling */
-.account-modal {
-  display: flex;
-  min-height: 100%;
-  align-items: center;
-  justify-content: center;
-  background-color: #f9f9f9;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.cardStyle {
-  width: 500px;
-  border-color: white;
-  background: #fff;
-  padding: 36px 0;
-  border-radius: 4px;
-  margin: 30px 0;
-  box-shadow: 0px 0 2px 0 rgba(0, 0, 0, 0.25);
-}
-
-#signupLogo {
-  max-height: 100px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.formTitle {
-  font-weight: 600;
-  margin-top: 20px;
-  color: #2F2D3B;
-  text-align: center;
-}
-
-.inputLabel {
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 6px;
-  margin-top: 24px;
-}
-
-.inputDiv {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
-
-input {
-  height: 40px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: none;
-  border: solid 1px #ccc;
-  padding: 0 11px;
-}
-
-input:disabled {
-  cursor: not-allowed;
-  border: solid 1px #eee;
-}
-
-.buttonWrapper {
-  margin-top: 40px;
-}
-
-.submitButton {
-  width: 70%;
-  height: 40px;
-  margin: auto;
-  display: block;
-  color: #fff;
-  background-color: #065492;
-  border-color: #065492;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.submitButton:disabled,
-button[disabled] {
-  border: 1px solid #cccccc;
-  background-color: #cccccc;
-  color: #666666;
-}
-
-#loader {
-  position: absolute;
-  z-index: 1;
-  margin: -2px 0 0 10px;
-  border: 4px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 4px solid #666666;
-  width: 14px;
-  height: 14px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* end change password modal styling */
 
 /* Responsive Styles */
 /* Tablet - 720-1023 */
