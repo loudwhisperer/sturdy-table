@@ -1,0 +1,111 @@
+<section data-id="{{event.id}}" data-userId="{{userId}}" id="event-section" class="content-container">
+  <div class="event-card create-event-page">
+    <h1>Start a Game?</h1>
+    <input type="text" placeholder="Name the Event" id="eventTitle" value="{{event.name}}"></input>
+    <!-- event photo input 
+    <form action="/action_page.php">
+      <input type="file" id="eventPic" name="eventPic">
+      <p>Choose Event Photo</p>
+    </form>
+    -->
+    <!-- dropdown menu for game choices -->
+    <!-- TODO - Implement pre-picked games later
+    <label for="game-choices">Choose a Game:</label>
+    <select name="game-choices" id="game-choices">
+      <option value="game1">Game 1</option>
+      <option value="game2">Game 2</option>
+      <option value="game3">Game 3</option>
+      <option value="na">N/A</option>
+    </select>
+    -->
+    <input type="text" placeholder="Add Custom Game" id="gameCustomChoice" value="{{event.game_name}}"></input>
+    <textarea name="addDescription" id="eventDescription" cols="30" rows="10" placeholder="Event Description">{{event.description}}</textarea>
+    <textarea name="addNotes" id="eventNotes" cols="30" rows="10"placeholder="Add Notes (Example: BYOB)" >{{event.notes}}</textarea>
+    <!-- Calendar for choosing the date -->
+    <!-- TODO: Placeholder for the date -->
+    <!-- TODO: Placeholder for the time -->
+    <fieldset>
+      <legend>Pick the Date:</legend>
+      <label for="eventDate">
+        <input id="eventDate" type="date" min="2023-02-01" value="{{event.date}}">
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Pick the Time:</legend>
+      <label for="eventTime">
+        <input id="eventTime" type="time" value="{{event.time_start}}">
+      </label>
+    </fieldset>
+
+    <div id="event-length-div">
+      <label for="eventLength">How long is this Event in minutes?</label>
+      <input type="number" name="eventLength" id="eventLength" min="30" step="15" value="{{event.est_length}}">
+    </div>
+
+    <label for="pub-priv">Public or Private?</label>
+    <select name="pub-priv" id="pub-priv">
+      {{#if event.is_public}}
+        <option value="true" selected>Public</option>
+        <option value="false">Private</option>
+      {{else}}
+        <option value="true">Public</option>
+        <option value="false" selected>Private</option>
+      {{/if}}
+    </select>
+
+    <label for="virt-irl">Virtual or In Person?</label>
+    <select name="virt-irl" id="virt-irl">
+      {{#if is_virtual}}
+        <option value="true" selected>Virtual</option>
+        <option value="false">In Person</option>
+      {{else}}
+        <option value="true" selected>Virtual</option>
+        <option value="false">In Person</option>
+      {{/if}}
+    </select>
+
+
+    <fieldset id="addressInput">
+      <h4>Enter Address of the Event or Virtual link:</h4>
+      <textarea name="address-link" id="address-link" cols="30" rows="5">{{event.location}}</textarea>
+      <!-- TODO - Impliment proper address fields-->
+      <!--
+      <p>Street Address</p>
+      <input type="text" placeholder="123 Main St" id="address1"></input>
+      <p>Address Line 2</p>
+      <input type="text" placeholder="Apt/Bldg #?" id="address2"></input>
+      <p>City</p>
+      <input type="text" placeholder="Denver" id="address3"></input>
+      <p>State</p>
+      <input type="text" placeholder="CO" id="address4"></input>
+      <p>Zip Code</p>
+      <input type="text" placeholder="80014" id="address5"></input>
+      -->
+    </fieldset>
+    <div>
+      <label for="capacity">Max Capacity of event?</label>
+      <input type="number" name="capacity" id="capacity" min="1" step="1" value="{{event.max_users}}">
+    </div>
+
+    <div class="inviteOthers">
+      <label for="addAttendee">Add Attendees</label>
+      <input type="text" name="addAttendee" id="addAttendee" placeholder="attendee username">
+      <button onclick="addAttendee()" id="addAttendeeBtn">Add</button>
+    </div>
+    <div class="attendees">
+      {{#each event.party_members as |member|}}
+        <div data-userId="{{member.id}}">
+          <span data-userId="{{member.id}}" class="event-attendee">{{member.displayname}}</span>
+          {{#if member.eventgroup.approved}}
+          <img src="/images/check-icon.svg" alt="checkmark icon">
+          {{else}}
+          <img src="/images/question-icon.svg" alt="question mark icon" onclick="approveAttendee(this.parentElement)">
+          {{/if}}
+          <img src="/images/x-icon.svg" alt="x icon" onclick="removeAttendee(this.parentElement)">
+        </div>
+      {{/each}}
+    </div>
+
+    <button id="createEvent" onclick="eventSave()">Save!</button>
+  </div>
+</section>
