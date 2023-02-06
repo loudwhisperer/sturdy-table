@@ -43,25 +43,21 @@ const showTab = (tab) => {
 }
 
 // *****change password*****
+//TODO: future-dev validate that new password and confrim password fields match
 const subNewPassBtn = (hrefArr[0] === 'account') ? document.getElementById("submitButton") : '';
 const changePassword = async () => {
   try {
-    const newPassword = document.getElementById('confirmPassword').value()
-    await fetch(
-      `/api/users/${session.userId}/changepassword`,
-      {
-        method: 'PUT',
-        headers: {
-          "X-Powered-By": "Express",
-          "Content-Type": "application/json; charset=utf-8",
-          "Connection": "keep-alive",
-          "Keep-Alive": "timeout=5",
-        },
-        body: {
-          'password': `${newPassword}`
-        }
-      }
-    ).then(response => {
+    const newPassword = document.getElementById('confirmPassword').value
+    const userI = document
+      .getElementById("account-page")
+      .getAttribute("data-id");
+    await fetch(`/api/users/${userI}/changepassword`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        password: `${newPassword}`,
+      }),
+    }).then((response) => {
       console.log(response);
     });
   } catch (err) {
@@ -84,23 +80,17 @@ const changePassModal = () => {
 const subNewNameBtn = (hrefArr[0] === 'account') ? document.getElementById("newNameButton") : '';
 const changeDisplayName = async () => {
   try {
-    const newDisplayName = document.getElementById("displayname").value();
-    await fetch(`/api/users/${session.userId}/account`, {
+    const newDisplayName = document.getElementById("displayname").value;
+    const userI = document.getElementById('account-page').getAttribute('data-id');
+    await fetch(`/api/users/${userI}/account`, {
       method: "PUT",
-      headers: {
-        "X-Powered-By": "Express",
-        "Content-Type": "application/json; charset=utf-8",
-        "Connection": "keep-alive",
-        "Keep-Alive": "timeout=5",
-      },
-      body: {
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         displayname: `${newDisplayName}`,
-      },
-    }).then((response) => {
-      console.log(response);
-    });
+      }),
+    })
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
   }
 };
 

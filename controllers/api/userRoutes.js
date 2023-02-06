@@ -40,15 +40,15 @@ router.get("/:id/account", async (req, res) => {
 
     // Get event data for events user is hosting
     const hostData = await Event.findAll({
-       where: { host_id: req.params.id },
-       attributes: ['id', 'name', 'game_name'],
-       include: [
+      where: { host_id: req.params.id },
+      attributes: ["id", "name", "game_name"],
+      include: [
         {
           model: User,
-          as: 'party_members'
+          as: "party_members",
         },
-      ] 
-      });
+      ],
+    });
     const hosting = hostData.map((host) => host.get({ plain: true }));
 
     // Format the data sent over
@@ -63,7 +63,7 @@ router.get("/:id/account", async (req, res) => {
 
     // Get event data for events user is attending
     const attendData = await Eventgroup.findAll({
-      where: { userId: req.params.id }
+      where: { userId: req.params.id },
     });
     const attending = attendData.map((attend) => attend.get({ plain: true }));
 
@@ -72,7 +72,7 @@ router.get("/:id/account", async (req, res) => {
       const newData = await Event.findOne({
         raw: true,
         where: { id: attending[i].eventId },
-        attributes: ['name']
+        attributes: ["name"],
       });
       attending[i].eventName = newData.name;
     }
@@ -155,7 +155,6 @@ router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
-      
     });
   } else {
     res.status(404).end();
@@ -166,36 +165,33 @@ router.post("/logout", (req, res) => {
 router.put("/:id/account", async (req, res) => {
   try {
     const data = await User.update(req.body, {
+      raw:true,
       where: { id: req.params.id },
-      include: ["email", "displayname"],
     });
+    console.info(req.body)
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
-router.put("/:id/changepass", async (req, res) => {
+router.put("/:id/changepassword", async (req, res) => {
   try {
-
-      const userDb = await User.findOne({
-        where: {
-          id: req.params.id,
-        },
-      });
+    const userDb = await User.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
     const data = await User.update(req.body, {
       where: { id: req.params.id },
       individualHooks: true,
     });
 
-    const validPassword =  (updatedUserData) => {
-        updatedUserData.password = bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
-        return updatedUserData;
-      }
-      
+    const validPassword = (updatedUserData) => {
+      updatedUserData.password = bcrypt.hash(updatedUserData.password, 10);
+      return updatedUserData;
+    };
+
     if (!validPassword) {
       res.status(404).json({
         message:
@@ -210,7 +206,7 @@ router.put("/:id/changepass", async (req, res) => {
     // });
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).json(err.message)
+    res.status(500).json(err.message);
   }
 });
 
