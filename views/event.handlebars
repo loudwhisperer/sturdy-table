@@ -29,13 +29,14 @@
         <span>Attendees:</span>
         <span>Game Capacity: {{get_count event.party_members}} / {{event.max_users}}</span>
         <div>
-          {{#each party_members as |member|}}
-            <span>{{member.displayname}}</span>
+          {{#each event.party_members as |member|}}
+            <span data-id="member.id">{{member.displayname}}</span>
             {{#if member.eventgroup.approved}}
-              <img src="" alt="checkmark" />
+              <img src="/images/check-icon.svg" alt="checkmark" />
             {{else}}
-              <img src="" alt="question mark" />
+              <img src="/images/question-icon.svg" alt="question mark" />
             {{/if}}
+            <img src="/images/x-icon.svg" alt="x icon">
           {{/each}}
         </div>
       </div>
@@ -47,7 +48,7 @@
     {{/if}}
     <span id="event-dop">Date of Play: {{event.date}}</span>
     {{#if event.is_public}}
-      <img src="" alt="private icon" />
+      <img src="/images/private-icon.svg" alt="private icon" />
     {{/if}}
     {{#ifEquals event.host_id userId}}
       <button id="add-attendees">Add Members</button>
