@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { User, Event, Friend, Eventgroup } = require("../../models");
-
+const { truncate } = require("lodash");
+const { User, Event, Eventgroup } = require("../../models");
+const notify = require("../../utils/email-notification");
 //frontend route that is expecting a res.render of a handlebars component
 
 //get all events
@@ -68,6 +69,12 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const dbEventData = await Event.create(req.body);
+    const userData = await User.findByPk(req.body.host_id, { raw: true });
+      notify(
+        `${userData.email}`,
+        `Hello ${userData.displayname}, ${dbEventData.name} has been created may your reign be long and fruitful`,
+        `Now that you have created the event its time to add some users to it, go ahead and do that in your event page now`
+      );
     res.status(200).json(dbEventData);
   } catch (err) {
     console.log(err);
@@ -78,9 +85,17 @@ router.post("/", async (req, res) => {
 //create a user in an event
 router.post("/attending", async (req, res) => {
   try {
-    const data = await Eventgroup.create(req.body);
-    res.status(200).json(data);
+    const groupData = await Eventgroup.create(req.body);
+    const eventData = await Event.findByPk(req.body.eventId, {raw:true});
+    const userData = await User.findByPk(req.body.userId, {raw:true})
+      notify(
+        `${userData.email}`,
+        `This is an invite to play ${eventData.game_name} with your friends. It will self destruct in 3..2..1`,
+        `your invited to ${eventData.name} at ${eventData.location} starting at ${eventData.time_start}`
+      );
+    res.status(200).json(groupData);
   } catch (err) {
+    console.info(err);
     res.status(500).json(err.message);
   }
 });
@@ -97,7 +112,7 @@ router.get("/attending/:id", async (req, res) => {
   }
 });
 
-//update an event and the users in it
+//update an event
 router.put("/:id", async (req, res) => {
   try {
     const data = await Event.update(req.body, {
@@ -112,17 +127,52 @@ router.put("/:id", async (req, res) => {
 });
 
 //delete an event by id
-router.delete("/:id", (req, res) => {
-  Event.destroy({ where: { id: req.params.id } }).then((data) =>
-    res.json(data)
-  );
+//TODO: change this to work with an association between User and Eventgroup for better coding practices
+router.delete("/:id", async (req, res) => {
+  try{
+    const getParty = await Eventgroup.findAll({where: {eventId: req.params.id}})
+    const eventData = await Event.findByPk(req.params.id, { raw: true });
+  const emailArr = []
+  for(let i = 0; i < getParty.length; i++){
+     const findUser = await User.findByPk(getParty[i].userId, {raw: true});
+     emailArr.push(findUser.email);
+  }
+  notify(
+      `${emailArr}`,
+      `The Party Has Been TPK'ed`,
+      `Sorry ${eventData.name} has been canceled`
+    );
+  const destroy = await Event.destroy({ where: { id: req.params.id } })
+  res.status(200).json(destroy);
+  } catch(err){
+  res.status(500).json(err.message);
+  }
 });
 
 //delete users from an event
-router.delete("/attending/:id", (req, res) => {
-  Eventgroup.destroy({ where: { eventId: req.params.id } }).then((data) =>
-    res.json(data)
+router.delete("/attending/:id/:otherId", async (req, res) => {
+  try{
+  const findEventGroup = await Eventgroup.findAll({
+  where: { eventId: req.params.id },  raw: true 
+  });
+  const groupArr = findEventGroup.find((user) => {
+    return user.userId == req.params.otherId
+  })
+  console.info(groupArr.id)
+  const delUser = await Eventgroup.destroy(
+    { where: { id: groupArr.id } }
   );
+  const userData = await User.findByPk(req.params.otherId, { raw: true });
+  const eventData = await Event.findByPk(req.params.id, { raw: true });
+    notify(
+      `${userData.email}`,
+      `You have been stricken from the record of ${eventData.name}. Good Day to You!!`,
+      `Maybe the next one`
+    );
+   res.status(200).json(delUser);
+    } catch(err){
+      res.status(500).json(err.message);
+    }
 });
 
 module.exports = router;
