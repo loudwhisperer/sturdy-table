@@ -4,6 +4,7 @@ const { User, Event, Friend, Eventgroup } = require("../../models");
 //frontend route that is expecting a res.render of a handlebars component
 
 //get all events
+/*
 router.get("/", async (req, res) => {
   try {
     const eventData = await Event.findAll({
@@ -11,6 +12,21 @@ router.get("/", async (req, res) => {
     });
     res.status(200).json(eventData);
   } catch (err) {
+    res.status(500).json(err);
+  }
+});
+*/
+
+// Get /create-event page
+router.get('/create-event', async(req, res) => {
+  try {
+
+    res.render('create-event', {
+      loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+    });
+  } 
+  catch(err) {
     res.status(500).json(err);
   }
 });

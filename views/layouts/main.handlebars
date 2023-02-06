@@ -18,7 +18,7 @@
         <a href="/">Home</a>
         {{#if loggedIn}}
           <a href="/api/users/{{userId}}/account">Account</a>
-          <a href="/create-event">Host Event</a>
+          <a href="/api/events/create-event">Host Event</a>
           <a href="" onclick="logout()">Logout</a>
         {{else}}
           <a href="/login">Login</a>
