@@ -210,8 +210,20 @@ const removeAttendee = async (userDiv) => {
 const approveAttendee = async (userDiv) => {
   try {
     const eventId = document.getElementById('event-section').getAttribute('data-id');
+    const url = `/api/events/approved/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const approveUser = await fetch(url, {
+      method: 'PUT',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        approved: true,
+        userId: `${userDiv.getAttribute('data-id')}`,
+        eventId: `${eventId}`
+      })
+    });
 
-
+    if (approveUser.ok) {
+      location.reload();
+    }
   } 
   catch (err) { console.error(err.message); }
 }

@@ -2,21 +2,6 @@ const router = require("express").Router();
 const { truncate } = require("lodash");
 const { User, Event, Eventgroup } = require("../../models");
 const notify = require("../../utils/email-notification");
-//frontend route that is expecting a res.render of a handlebars component
-
-//get all events
-/*
-router.get("/", async (req, res) => {
-  try {
-    const eventData = await Event.findAll({
-      include: [{ model: User, as: "party_members" }],
-    });
-    res.status(200).json(eventData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-*/
 
 // Get a user by displayname to add to an event
 router.get('/find-user/:displayname', async (req, res) => {
@@ -50,7 +35,6 @@ router.get('/create-event', async (req, res) => {
 // GET route to teh edit-event page
 router.get('/:id/edit-event', async (req, res) => {
   try {
-    console.info('edit-event check: ' + req.params.id);
     const eventData = await Event.findByPk(req.params.id, {
       include: [
         {
@@ -67,9 +51,6 @@ router.get('/:id/edit-event', async (req, res) => {
 
     // Turn db data into handlebars plain obj
     const event = eventData.get({ plain: true });
-
-    //console.info(event);
-    //console.info(event.party_members[0]);
     
     res.render('edit-event', {
       event,
@@ -101,8 +82,6 @@ router.get("/:id", async (req, res) => {
 
     // Turn db data into handlebars plain obj
     const event = eventData.get({ plain: true });
-
-    console.info(event);
 
     // Send handlebars page to user
     res.render("event", {
@@ -164,6 +143,23 @@ router.get("/attending/:id", async (req, res) => {
   }
 });
 
+// Approve a user for an event
+router.put('/approved/:eventId/:otherId', async (req, res) => {
+  try {
+    const getParty = await Eventgroup.findAll({
+      raw: true, 
+      where: {eventId: req.params.eventId}
+    });
+    const getGroupId = getParty.find((user) => {return user.userId == req.params.otherId});
+
+    const data = await Eventgroup.update(req.body, {
+      where: { id: getGroupId.id }
+    });
+    res.status(200).json(data);
+  }
+  catch(err) {res.status(500).json(err.message);}
+});
+
 //update an event
 router.put("/:id", async (req, res) => {
   try {
@@ -210,7 +206,7 @@ router.delete("/attending/:id/:otherId", async (req, res) => {
   const groupArr = findEventGroup.find((user) => {
     return user.userId == req.params.otherId
   })
-  console.info(groupArr.id)
+
   const delUser = await Eventgroup.destroy(
     { where: { id: groupArr.id } }
   );
