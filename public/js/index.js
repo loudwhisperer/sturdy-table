@@ -270,12 +270,52 @@ const eventCreate = async () => {
     });
 
     if (createEvent.ok) {
+      // Check for attendees and add them
+
+
+
       const newEventObj = await createEvent.json();
       document.location.replace(`/api/events/${newEventObj.id}`);
-
     }
   } 
   catch (err) { console.error(err.message); }
+}
+
+// Get user data for adding an attendee to the create-event/edit-event page
+const eventCreateAddAttendee = async () => {
+  try {
+    const newAttendee = document.getElementById('addAttendee').value;
+    const getUser = await fetch(`/api/events/find-user/${newAttendee}`, {
+      method: 'GET',
+      headers: { "Content-Type": "application/json" },
+    });
+    let userData = await getUser.json();
+
+    if (!userData.id) {
+      alert('Could not find that user!');
+      return;
+    }
+
+    // TODO - Add validation for duplicate adds
+    const attendeesContainer = document.getElementById('attendeesList');
+    const attendeeDiv = document.createElement('div');
+    const htmlSpan = document.createElement('span');
+    htmlSpan.setAttribute('data-userId', userData.id);
+    htmlSpan.textContent = userData.displayname;
+    const htmlImg = document.createElement('img');
+    htmlImg.setAttribute('src', '/images/x-icon.svg');
+    htmlImg.setAttribute('alt', 'x icon');
+    htmlImg.setAttribute('onclick', 'pageOnlyRemoveAttendee(this.parentElement)');
+    
+    attendeeDiv.appendChild(htmlSpan);
+    attendeeDiv.appendChild(htmlImg);
+    attendeesContainer.appendChild(attendeeDiv);
+  }
+  catch (err) { console.error(err.message); }
+}
+// Remove Attendee from create-event/edit-event page ONLY
+const pageOnlyRemoveAttendee = (htmlDiv) => {
+  htmlDiv.remove();
 }
 
 // TODO - REFACTOR!!!

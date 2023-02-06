@@ -80,10 +80,10 @@
     <div class="inviteOthers">
       <label for="addAttendee">Add Attendees</label>
       <input type="text" name="addAttendee" id="addAttendee" placeholder="attendee username">
-      <button id="addAttendeeBtn">Add</button>
+      <button id="addAttendeeBtn" onclick="eventCreateAddAttendee()">Add</button>
     </div>
-    <div class="attendees">
-      <span>User Name Here</span>
+    <div id="attendeesList" class="attendees">
+      
     </div>
 
     <button onclick="eventCreate()">Create!</button>
