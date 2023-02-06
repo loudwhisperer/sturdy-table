@@ -24,24 +24,21 @@ Always wanted to schedule a game but your friends can never find the time? Send 
 ## Installation
 
 1. Install MySQL and NodeJS for your OS version
-    - Configure MySQL
+   - Configure MySQL
 2. Clone the repository from GitHub to your local machine
 3. Create a '.env' file in the root directory
-    - Use the database name: 'tableapp_db'
-    - Add your MySQL username and password
+   - Use the database name: 'tableapp_db'
+   - Add your MySQL username and password
 4. Open a terminal in the root of the cloned repository
-    - In the terminal, run the following: '$ npm i'
-5. Log into MySQL in the terminal 
-    - Command: '$ mysql -u root -p'
+   - In the terminal, run the following: '$ npm i'
+5. Log into MySQL in the terminal
+   - Command: '$ mysql -u root -p'
 6. Now, while logged into MySQL, run the following commands
-    - '$ source db/schema.sql;'
-    - then 'exit' to leave MySQL
+   - 'mysql> source db/schema.sql;'
+   - then 'mysql> exit' to leave MySQL
 7. Now, while not logged into MySQL, run the following commands
-    - '$ npm run seed'
-    - '$ node server.js'
-
-
-
+   - '$ npm run seed'
+   - '$ node server.js'
 
 ## Usage
 
