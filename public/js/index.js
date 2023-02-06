@@ -193,7 +193,7 @@ const addAttendee = async () => {
 const removeAttendee = async (userDiv) => {
   try {
     const eventId = document.getElementById('event-section').getAttribute('data-id');
-    const url = `/api/events/attending/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const url = `/api/events/attending/${eventId}/${userDiv.getAttribute('data-userId')}`;
     const deleteUser = await fetch(url, {
       method: 'DELETE',
       headers: { "Content-Type": "application/json" }
@@ -210,13 +210,13 @@ const removeAttendee = async (userDiv) => {
 const approveAttendee = async (userDiv) => {
   try {
     const eventId = document.getElementById('event-section').getAttribute('data-id');
-    const url = `/api/events/approved/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const url = `/api/events/approved/${eventId}/${userDiv.getAttribute('data-userId')}`;
     const approveUser = await fetch(url, {
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         approved: true,
-        userId: `${userDiv.getAttribute('data-id')}`,
+        userId: `${userDiv.getAttribute('data-userId')}`,
         eventId: `${eventId}`
       })
     });
@@ -286,9 +286,6 @@ const eventCreate = async () => {
           }),
         });
         
-        console.log(attendeeList[i].getAttribute('data-userId'));
-        console.log(await addAttendeeToEvent.json());
-
         // TODO - Add check for error
       }
 

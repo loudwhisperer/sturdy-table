@@ -30,7 +30,7 @@
         <span>Game Capacity: {{get_count event.party_members}} / {{event.max_users}}</span>
         <div>
           {{#each event.party_members as |member|}}
-            <div data-id="{{member.id}}">
+            <div data-userId="{{member.id}}">
               <span>{{member.displayname}}</span>
               {{#if member.eventgroup.approved}}
                 <img src="/images/check-icon.svg" alt="checkmark" />

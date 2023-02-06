@@ -94,13 +94,15 @@
     </div>
     <div class="attendees">
       {{#each event.party_members as |member|}}
-        <span data-userId="{{member.id}}">{{member.displayname}}</span>
-        {{#if member.eventgroup.approved}}
+        <div data-userId="{{member.id}}">
+          <span data-userId="{{member.id}}" class="event-attendee">{{member.displayname}}</span>
+          {{#if member.eventgroup.approved}}
           <img src="/images/check-icon.svg" alt="checkmark icon">
-        {{else}}
-          <img src="/images/question-icon.svg" alt="question mark icon">
-        {{/if}}
-        <img src="/images/x-icon.svg" alt="x icon">
+          {{else}}
+          <img src="/images/question-icon.svg" alt="question mark icon" onclick="approveAttendee(this.parentElement)">
+          {{/if}}
+          <img src="/images/x-icon.svg" alt="x icon" onclick="removeAttendee(this.parentElement)">
+        </div>
       {{/each}}
     </div>
 
