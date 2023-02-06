@@ -30,14 +30,14 @@ header {
   background-color: var(--color-secondary);
   color: var(--color-on-secondary);
   display: flex;
-  border-bottom-right-radius: var(--border-radius);
+  /*border-bottom-right-radius: var(--border-radius);*/
 }
 
 .logo {
   width: 16rem;
   height: 12rem;
   padding: .5rem 0;
-  border-radius: var(--border-radius);
+/*  border-radius: var(--border-radius);*/
   background-color: var(--color-secondary);
 }
 
@@ -73,7 +73,7 @@ a:hover {
 }
 
 #nav-filter button {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 400;
   text-transform: uppercase;
   border-radius: var(--border-radius);
@@ -89,7 +89,7 @@ aside {
   bottom: 1rem;
   z-index: 2;
   background-color: var(--color-secondary);
-  border-radius: var(--border-radius);
+  /*border-radius: var(--border-radius);*/  
 }
 
 aside h3 {
