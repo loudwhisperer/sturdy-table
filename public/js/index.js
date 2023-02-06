@@ -360,7 +360,6 @@ const eventSave = async () => {
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id: `${newEvent.id}`,
         name: `${newEvent.name}`,
         date: `${newEvent.date}`,
         time_start: `${newEvent.time}`,
@@ -384,5 +383,6 @@ const eventSave = async () => {
   catch (err) { console.error(err.message); }
 }
 
+// TODO - Clear add member/attendee fields after use
 // TODO - REFACTOR!!! LIKE ALOT!!
 // TODO - MUCH VALIDATION!!!
