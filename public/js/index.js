@@ -187,7 +187,33 @@ const addAttendee = async () => {
     }
   }
   catch (err) { console.error(err.message); }
+}
 
+// *****Add User Event Btn*****
+const removeAttendee = async (userDiv) => {
+  try {
+    const eventId = document.getElementById('event-section').getAttribute('data-id');
+    const url = `/api/events/attending/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const deleteUser = await fetch(url, {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (deleteUser.ok) {
+      location.reload();
+    }
+  } 
+  catch (err) { console.error(err.message); }
+}
+
+// *****Approve User Event Btn*****
+const approveAttendee = async (userDiv) => {
+  try {
+    const eventId = document.getElementById('event-section').getAttribute('data-id');
+
+
+  } 
+  catch (err) { console.error(err.message); }
 }
 
 // TODO - REFACTOR!!!

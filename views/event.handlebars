@@ -30,13 +30,15 @@
         <span>Game Capacity: {{get_count event.party_members}} / {{event.max_users}}</span>
         <div>
           {{#each event.party_members as |member|}}
-            <span data-id="member.id">{{member.displayname}}</span>
-            {{#if member.eventgroup.approved}}
-              <img src="/images/check-icon.svg" alt="checkmark" />
-            {{else}}
-              <img src="/images/question-icon.svg" alt="question mark" />
-            {{/if}}
-            <img src="/images/x-icon.svg" alt="x icon">
+            <div data-id="{{member.id}}">
+              <span>{{member.displayname}}</span>
+              {{#if member.eventgroup.approved}}
+                <img src="/images/check-icon.svg" alt="checkmark" />
+              {{else}}
+                <img src="/images/question-icon.svg" alt="question mark" onclick="approveAttendee(this.parentElement)"/>
+              {{/if}}
+              <img src="/images/x-icon.svg" alt="x icon" onclick="removeAttendee(this.parentElement)"/>
+            </div>
           {{/each}}
         </div>
       </div>
