@@ -334,4 +334,55 @@ const pageOnlyRemoveAttendee = (htmlDiv) => {
   htmlDiv.remove();
 }
 
-// TODO - REFACTOR!!!
+// *****Edit Event Page - Save Btn*****
+const eventSave = async () => {
+  try {
+    // Obj to hold the event data
+    const newEvent = {};
+    const htmlEvent = document.getElementById('event-section');
+
+    // TODO - Add validation to the object
+    newEvent.id = htmlEvent.getAttribute('data-id');
+    newEvent.name = document.getElementById('eventTitle').value;
+    newEvent.date = document.getElementById('eventDate').value;
+    newEvent.time = document.getElementById('eventTime').value;
+    newEvent.est_length = document.getElementById('eventLength').value;
+    newEvent.public = document.getElementById('pub-priv').value;
+    newEvent.virtual = document.getElementById('virt-irl').value;
+    newEvent.capacity = document.getElementById('capacity').value;
+    newEvent.location = document.getElementById('address-link').value;
+    newEvent.game = document.getElementById('gameCustomChoice').value;
+    newEvent.description = document.getElementById('eventDescription').value;
+    newEvent.notes = document.getElementById('eventNotes').value;
+    newEvent.host = htmlEvent.getAttribute('data-userId');
+
+    const createEvent = await fetch(`/api/events/${newEvent.id}`, {
+      method: 'PUT',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: `${newEvent.id}`,
+        name: `${newEvent.name}`,
+        date: `${newEvent.date}`,
+        time_start: `${newEvent.time}`,
+        est_length: `${newEvent.est_length}`,
+        is_public: `${newEvent.public}`,
+        is_virtual: `${newEvent.virtual}`,
+        max_users: `${newEvent.capacity}`,
+        location: `${newEvent.location}`,
+        category: '',
+        game_name: `${newEvent.game}`,
+        description: `${newEvent.description}`,
+        notes: `${newEvent.notes}`,
+        host_id: `${newEvent.host}`,
+      })
+    });
+
+    if (createEvent.ok) {
+      document.location.replace(`/api/events/${newEvent.id}`);
+    }
+  }
+  catch (err) { console.error(err.message); }
+}
+
+// TODO - REFACTOR!!! LIKE ALOT!!
+// TODO - MUCH VALIDATION!!!
