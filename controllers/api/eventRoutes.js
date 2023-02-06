@@ -19,10 +19,35 @@ router.get("/", async (req, res) => {
 */
 
 // Get /create-event page
-router.get('/create-event', async(req, res) => {
+router.get('/create-event', async (req, res) => {
   try {
-
     res.render('create-event', {
+      loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+    });
+  } 
+  catch(err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/edit-event/:id', async (req, res) => {
+  try {
+    const eventData = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          as: "party_members",
+        },
+      ],
+      raw: true
+      // TODO: add an attributes to have everything returned in the user object but the encrypted password
+    });
+
+    console.info(eventData);
+    
+    res.render('edit-event', {
+      eventData,
       loggedIn: req.session.loggedIn,
       userId: req.session.userId,
     });
