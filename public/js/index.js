@@ -46,7 +46,7 @@ const showTab = (tab) => {
 const subNewPassBtn = (hrefArr[0] === 'account') ? document.getElementById("submitButton"): '';
 const changePassword = async () => {
   try{
-  const newPassword = getElemById('confirmPassword').value()
+  const newPassword = document.getElementById('confirmPassword').value()
   await fetch(
 	`/api/users/${session.userId}/changepassword`,
 	{
@@ -75,8 +75,8 @@ if (hrefArr[0] === 'account') {
 
 //functionality for the change password button so it appears on click
 const changePassModal = () => {
-   const modal = getElemById("ChangePassword");
-   modal.style.visibility = visible;
+   const modal = document.getElementById("ChangePassword");
+   modal.classList.toggle('hidden');
  };
 
  //begin functions for changing a display name of a user
@@ -84,7 +84,7 @@ const changePassModal = () => {
  const subNewNameBtn = (hrefArr[0] === 'account') ? document.getElementById("newNameButton") : '';
  const changeDisplayName = async () => {
    try {
-     const newDisplayName = getElemById("displayname").value();
+     const newDisplayName = document.getElementById("displayname").value();
      await fetch(`/api/users/${session.userId}/account`, {
        method: "PUT",
        headers: {

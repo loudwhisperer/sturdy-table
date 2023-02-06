@@ -158,14 +158,13 @@ aside h3 {
 }
 
 /* change password modal styling */
-#ChangePassword {
+.ChangePassword {
   display: flex;
   min-height: 100%;
   align-items: center;
   justify-content: center;
   background-color: #f9f9f9;
   font-family: 'Open Sans', sans-serif;
-  visibility: hidden;
 }
 
 .cardStyle {
