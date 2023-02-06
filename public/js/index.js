@@ -248,7 +248,7 @@ const eventCreate = async () => {
     newEvent.description = document.getElementById('eventDescription').value;
     newEvent.notes = document.getElementById('eventNotes').value;
     newEvent.host = htmlEvent.getAttribute('data-id');
-
+    
     const createEvent = await fetch('/api/events', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
@@ -270,11 +270,29 @@ const eventCreate = async () => {
     });
 
     if (createEvent.ok) {
-      // Check for attendees and add them
-
-
-
       const newEventObj = await createEvent.json();
+      // Check for attendees and add them
+      const attendeeList = document.getElementsByClassName('event-attendee');
+      // Loop through attendeeList adding them to the Eventgroup table for this event
+      for (let i = 0; i < attendeeList.length; i++) {
+        // Add the user to the event!
+        const addAttendeeToEvent = await fetch('/api/events/attending', {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            approved: true,
+            userId: `${attendeeList[i].getAttribute('data-userId') }`,
+            eventId: `${newEventObj.id}`
+          }),
+        });
+        
+        console.log(attendeeList[i].getAttribute('data-userId'));
+        console.log(await addAttendeeToEvent.json());
+
+        // TODO - Add check for error
+      }
+
+      
       document.location.replace(`/api/events/${newEventObj.id}`);
     }
   } 
@@ -301,6 +319,7 @@ const eventCreateAddAttendee = async () => {
     const attendeeDiv = document.createElement('div');
     const htmlSpan = document.createElement('span');
     htmlSpan.setAttribute('data-userId', userData.id);
+    htmlSpan.classList.add('event-attendee');
     htmlSpan.textContent = userData.displayname;
     const htmlImg = document.createElement('img');
     htmlImg.setAttribute('src', '/images/x-icon.svg');
