@@ -1,4 +1,4 @@
-<section class="content-container">
+<section data-id="{{userId}}" id="new-event" class="content-container">
   <div class="event-card create-event-page">
     <h1>Start a Game?</h1>
     <input type="text" placeholder="Name the Event" id="eventTitle"></input>
@@ -24,13 +24,13 @@
     <!-- Calendar for choosing the date -->
     <!-- TODO: Placeholder for the date -->
     <!-- TODO: Placeholder for the time -->
-    <fieldset id="eventDate">
+    <fieldset>
       <legend>Pick the Date:</legend>
       <label for="eventDate">
         <input id="eventDate" type="date" min="2023-02-01">
       </label>
     </fieldset>
-    <fieldset id="eventTime">
+    <fieldset>
       <legend>Pick the Time:</legend>
       <label for="eventTime">
         <input id="eventTime" type="time">
@@ -44,14 +44,14 @@
 
     <label for="pub-priv">Public or Private?</label>
     <select name="pub-priv" id="pub-priv">
-      <option value="public">Public</option>
-      <option value="private">Private</option>
+      <option value="true">Public</option>
+      <option value="false">Private</option>
     </select>
 
     <label for="virt-irl">Virtual or In Person?</label>
     <select name="virt-irl" id="virt-irl">
-      <option value="virtual">Virtual</option>
-      <option value="inPerson">In Person</option>
+      <option value="true">Virtual</option>
+      <option value="false">In Person</option>
     </select>
 
 
@@ -86,6 +86,6 @@
       <span>User Name Here</span>
     </div>
 
-    <button id="createEvent" type="submit">Create!</button>
+    <button onclick="eventCreate()">Create!</button>
   </div>
 </section>
