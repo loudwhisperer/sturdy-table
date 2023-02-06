@@ -1,4 +1,4 @@
-<section data-id="{{event.id}}" id="event-section" class="content-container">
+<section data-id="{{event.id}}" data-userId="{{userId}}" id="event-section" class="content-container">
   <div class="event-card create-event-page">
     <h1>Start a Game?</h1>
     <input type="text" placeholder="Name the Event" id="eventTitle" value="{{event.name}}"></input>
@@ -24,13 +24,13 @@
     <!-- Calendar for choosing the date -->
     <!-- TODO: Placeholder for the date -->
     <!-- TODO: Placeholder for the time -->
-    <fieldset id="eventDate">
+    <fieldset>
       <legend>Pick the Date:</legend>
       <label for="eventDate">
         <input id="eventDate" type="date" min="2023-02-01" value="{{event.date}}">
       </label>
     </fieldset>
-    <fieldset id="eventTime">
+    <fieldset>
       <legend>Pick the Time:</legend>
       <label for="eventTime">
         <input id="eventTime" type="time" value="{{event.time_start}}">
@@ -45,22 +45,22 @@
     <label for="pub-priv">Public or Private?</label>
     <select name="pub-priv" id="pub-priv">
       {{#if event.is_public}}
-        <option value="public" selected>Public</option>
-        <option value="private">Private</option>
+        <option value="true" selected>Public</option>
+        <option value="false">Private</option>
       {{else}}
-        <option value="public">Public</option>
-        <option value="private" selected>Private</option>
+        <option value="true">Public</option>
+        <option value="false" selected>Private</option>
       {{/if}}
     </select>
 
     <label for="virt-irl">Virtual or In Person?</label>
     <select name="virt-irl" id="virt-irl">
       {{#if is_virtual}}
-        <option value="virtual" selected>Virtual</option>
-        <option value="inPerson">In Person</option>
+        <option value="true" selected>Virtual</option>
+        <option value="false">In Person</option>
       {{else}}
-        <option value="virtual" selected>Virtual</option>
-        <option value="inPerson">In Person</option>
+        <option value="true" selected>Virtual</option>
+        <option value="false">In Person</option>
       {{/if}}
     </select>
 
@@ -94,16 +94,18 @@
     </div>
     <div class="attendees">
       {{#each event.party_members as |member|}}
-        <span data-userId="{{member.id}}">{{member.displayname}}</span>
-        {{#if member.eventgroup.approved}}
+        <div data-userId="{{member.id}}">
+          <span data-userId="{{member.id}}" class="event-attendee">{{member.displayname}}</span>
+          {{#if member.eventgroup.approved}}
           <img src="/images/check-icon.svg" alt="checkmark icon">
-        {{else}}
-          <img src="/images/question-icon.svg" alt="question mark icon">
-        {{/if}}
-        <img src="/images/x-icon.svg" alt="x icon">
+          {{else}}
+          <img src="/images/question-icon.svg" alt="question mark icon" onclick="approveAttendee(this.parentElement)">
+          {{/if}}
+          <img src="/images/x-icon.svg" alt="x icon" onclick="removeAttendee(this.parentElement)">
+        </div>
       {{/each}}
     </div>
 
-    <button id="createEvent" type="submit">Create!</button>
+    <button id="createEvent" onclick="eventSave()">Save!</button>
   </div>
 </section>

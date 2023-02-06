@@ -193,7 +193,7 @@ const addAttendee = async () => {
 const removeAttendee = async (userDiv) => {
   try {
     const eventId = document.getElementById('event-section').getAttribute('data-id');
-    const url = `/api/events/attending/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const url = `/api/events/attending/${eventId}/${userDiv.getAttribute('data-userId')}`;
     const deleteUser = await fetch(url, {
       method: 'DELETE',
       headers: { "Content-Type": "application/json" }
@@ -210,13 +210,13 @@ const removeAttendee = async (userDiv) => {
 const approveAttendee = async (userDiv) => {
   try {
     const eventId = document.getElementById('event-section').getAttribute('data-id');
-    const url = `/api/events/approved/${eventId}/${userDiv.getAttribute('data-id')}`;
+    const url = `/api/events/approved/${eventId}/${userDiv.getAttribute('data-userId')}`;
     const approveUser = await fetch(url, {
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         approved: true,
-        userId: `${userDiv.getAttribute('data-id')}`,
+        userId: `${userDiv.getAttribute('data-userId')}`,
         eventId: `${eventId}`
       })
     });
@@ -228,4 +228,161 @@ const approveAttendee = async (userDiv) => {
   catch (err) { console.error(err.message); }
 }
 
-// TODO - REFACTOR!!!
+// *****Create Event Btn*****
+const eventCreate = async () => {
+  try {
+    // Obj to hold the event data
+    const newEvent = {};
+    const htmlEvent = document.getElementById('new-event');
+
+    // TODO - Add validation to the object
+    newEvent.name = document.getElementById('eventTitle').value;
+    newEvent.date = document.getElementById('eventDate').value;
+    newEvent.time = document.getElementById('eventTime').value;
+    newEvent.est_length = document.getElementById('eventLength').value;
+    newEvent.public = document.getElementById('pub-priv').value;
+    newEvent.virtual = document.getElementById('virt-irl').value;
+    newEvent.capacity = document.getElementById('capacity').value;
+    newEvent.location = document.getElementById('address-link').value;
+    newEvent.game = document.getElementById('gameCustomChoice').value;
+    newEvent.description = document.getElementById('eventDescription').value;
+    newEvent.notes = document.getElementById('eventNotes').value;
+    newEvent.host = htmlEvent.getAttribute('data-id');
+    
+    const createEvent = await fetch('/api/events', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: `${newEvent.name}`,
+        date: `${newEvent.date}`,
+        time_start: `${newEvent.time}`,
+        est_length: `${newEvent.est_length}`,
+        is_public: `${newEvent.public}`,
+        is_virtual: `${newEvent.virtual}`,
+        max_users: `${newEvent.capacity}`,
+        location: `${newEvent.location}`,
+        category: '',
+        game_name: `${newEvent.game}`,
+        description: `${newEvent.description}`,
+        notes: `${newEvent.notes}`,
+        host_id: `${newEvent.host}`,
+      })
+    });
+
+    if (createEvent.ok) {
+      const newEventObj = await createEvent.json();
+      // Check for attendees and add them
+      const attendeeList = document.getElementsByClassName('event-attendee');
+      // Loop through attendeeList adding them to the Eventgroup table for this event
+      for (let i = 0; i < attendeeList.length; i++) {
+        // Add the user to the event!
+        const addAttendeeToEvent = await fetch('/api/events/attending', {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            approved: true,
+            userId: `${attendeeList[i].getAttribute('data-userId') }`,
+            eventId: `${newEventObj.id}`
+          }),
+        });
+        
+        // TODO - Add check for error
+      }
+
+      
+      document.location.replace(`/api/events/${newEventObj.id}`);
+    }
+  } 
+  catch (err) { console.error(err.message); }
+}
+
+// Get user data for adding an attendee to the create-event/edit-event page
+const eventCreateAddAttendee = async () => {
+  try {
+    const newAttendee = document.getElementById('addAttendee').value;
+    const getUser = await fetch(`/api/events/find-user/${newAttendee}`, {
+      method: 'GET',
+      headers: { "Content-Type": "application/json" },
+    });
+    let userData = await getUser.json();
+
+    if (!userData.id) {
+      alert('Could not find that user!');
+      return;
+    }
+
+    // TODO - Add validation for duplicate adds
+    const attendeesContainer = document.getElementById('attendeesList');
+    const attendeeDiv = document.createElement('div');
+    const htmlSpan = document.createElement('span');
+    htmlSpan.setAttribute('data-userId', userData.id);
+    htmlSpan.classList.add('event-attendee');
+    htmlSpan.textContent = userData.displayname;
+    const htmlImg = document.createElement('img');
+    htmlImg.setAttribute('src', '/images/x-icon.svg');
+    htmlImg.setAttribute('alt', 'x icon');
+    htmlImg.setAttribute('onclick', 'pageOnlyRemoveAttendee(this.parentElement)');
+    
+    attendeeDiv.appendChild(htmlSpan);
+    attendeeDiv.appendChild(htmlImg);
+    attendeesContainer.appendChild(attendeeDiv);
+  }
+  catch (err) { console.error(err.message); }
+}
+// Remove Attendee from create-event/edit-event page ONLY
+const pageOnlyRemoveAttendee = (htmlDiv) => {
+  htmlDiv.remove();
+}
+
+// *****Edit Event Page - Save Btn*****
+const eventSave = async () => {
+  try {
+    // Obj to hold the event data
+    const newEvent = {};
+    const htmlEvent = document.getElementById('event-section');
+
+    // TODO - Add validation to the object
+    newEvent.id = htmlEvent.getAttribute('data-id');
+    newEvent.name = document.getElementById('eventTitle').value;
+    newEvent.date = document.getElementById('eventDate').value;
+    newEvent.time = document.getElementById('eventTime').value;
+    newEvent.est_length = document.getElementById('eventLength').value;
+    newEvent.public = document.getElementById('pub-priv').value;
+    newEvent.virtual = document.getElementById('virt-irl').value;
+    newEvent.capacity = document.getElementById('capacity').value;
+    newEvent.location = document.getElementById('address-link').value;
+    newEvent.game = document.getElementById('gameCustomChoice').value;
+    newEvent.description = document.getElementById('eventDescription').value;
+    newEvent.notes = document.getElementById('eventNotes').value;
+    newEvent.host = htmlEvent.getAttribute('data-userId');
+
+    const createEvent = await fetch(`/api/events/${newEvent.id}`, {
+      method: 'PUT',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: `${newEvent.id}`,
+        name: `${newEvent.name}`,
+        date: `${newEvent.date}`,
+        time_start: `${newEvent.time}`,
+        est_length: `${newEvent.est_length}`,
+        is_public: `${newEvent.public}`,
+        is_virtual: `${newEvent.virtual}`,
+        max_users: `${newEvent.capacity}`,
+        location: `${newEvent.location}`,
+        category: '',
+        game_name: `${newEvent.game}`,
+        description: `${newEvent.description}`,
+        notes: `${newEvent.notes}`,
+        host_id: `${newEvent.host}`,
+      })
+    });
+
+    if (createEvent.ok) {
+      document.location.replace(`/api/events/${newEvent.id}`);
+    }
+  }
+  catch (err) { console.error(err.message); }
+}
+
+// TODO - REFACTOR!!! LIKE ALOT!!
+// TODO - MUCH VALIDATION!!!
