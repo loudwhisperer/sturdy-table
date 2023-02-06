@@ -19,7 +19,7 @@
         {{#if loggedIn}}
           <a href="/api/users/{{userId}}/account">Account</a>
           <a href="/api/events/create-event">Host Event</a>
-          <a href="/api/users/logout">Logout</a>
+          <a href="" onclick="logout()">Logout</a>
         {{else}}
           <a href="/login">Login</a>
         {{/if}}
