@@ -31,8 +31,9 @@ router.get('/create-event', async (req, res) => {
   }
 });
 
-router.get('/edit-event/:id', async (req, res) => {
+router.get('/:id/edit-event', async (req, res) => {
   try {
+    console.info('edit-event check: ' + req.params.id);
     const eventData = await Event.findByPk(req.params.id, {
       include: [
         {
@@ -50,8 +51,8 @@ router.get('/edit-event/:id', async (req, res) => {
     // Turn db data into handlebars plain obj
     const event = eventData.get({ plain: true });
 
-    console.info(event);
-    console.info(event.party_members[0]);
+    //console.info(event);
+    //console.info(event.party_members[0]);
     
     res.render('edit-event', {
       event,
@@ -83,6 +84,8 @@ router.get("/:id", async (req, res) => {
 
     // Turn db data into handlebars plain obj
     const event = eventData.get({ plain: true });
+
+    console.info(event);
 
     // Send handlebars page to user
     res.render("event", {

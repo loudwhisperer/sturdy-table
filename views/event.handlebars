@@ -1,9 +1,9 @@
-<section id="event-page-container" class="content-container">
+<section data-id="{{event.id}}" id="event-page-container" class="content-container">
   <article data-id="{{event.id}}" class="event-page event-card">
     <h2 id="event-title">{{event.name}}</h2>
     {{#ifEquals event.host_id userId}}
-      <button id="edit-event">Edit Event</button>
-      <button id="cancel-event">Cancel Event</button>
+      <button onclick="editEvent()">Edit Event</button>
+      <button onclick="">Cancel Event</button>
     {{/ifEquals}}
     <div id="event-game">
       <span>Game Being Played</span>

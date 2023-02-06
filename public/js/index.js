@@ -119,6 +119,22 @@ const logout = async () => {
   }
 };
 
+// *****Edit Event*****
+const editEvent = async () => {
+  try {
+    const id = document.getElementById('event-page-container').getAttribute('data-id');
+    const response = await fetch(`/api/events/${id}/edit-event`, {
+      method: 'GET',
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (response.ok) {
+      document.location.replace(`/api/events/${id}/edit-event`);
+    }
+
+  } 
+  catch(err) {console.error(err.message);}
+}
 
 
 // TODO - REFACTOR!!!
