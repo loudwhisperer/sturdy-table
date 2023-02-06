@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User, Event, Eventgroup } = require("../../models");
 const bcrypt = require("bcrypt");
-const auth = require("../../utils/auth");
+const notify = require("../../utils/email-notification");
 
 //get all users
 router.get("/", async (req, res) => {
