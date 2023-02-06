@@ -119,7 +119,7 @@ const logout = async () => {
   }
 };
 
-// *****Edit Event*****
+// *****Edit Event Btn*****
 const editEvent = async () => {
   try {
     const id = document.getElementById('event-page-container').getAttribute('data-id');
@@ -136,5 +136,22 @@ const editEvent = async () => {
   catch(err) {console.error(err.message);}
 }
 
+// *****Cancel Event Btn*****
+// TODO - Add confirmation on button press
+const cancelEvent = async () => {
+  try {
+    const id = document.getElementById('event-page-container').getAttribute('data-id');
+    const response = await fetch(`/api/events/${id}`, {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (response.ok) {
+      document.location.replace(`/`);
+    }
+
+  } 
+  catch(err) {console.error(err.message);}
+}
 
 // TODO - REFACTOR!!!

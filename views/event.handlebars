@@ -3,7 +3,7 @@
     <h2 id="event-title">{{event.name}}</h2>
     {{#ifEquals event.host_id userId}}
       <button onclick="editEvent()">Edit Event</button>
-      <button onclick="">Cancel Event</button>
+      <button onclick="cancelEvent()">Cancel Event</button>
     {{/ifEquals}}
     <div id="event-game">
       <span>Game Being Played</span>
