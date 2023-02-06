@@ -1,4 +1,4 @@
-<section data-id="{{event.id}}" id="event-page-container" class="content-container">
+<section data-id="{{event.id}}" id="event-section" class="content-container">
   <article data-id="{{event.id}}" class="event-page event-card">
     <h2 id="event-title">{{event.name}}</h2>
     {{#ifEquals event.host_id userId}}
@@ -51,8 +51,8 @@
       <img src="/images/private-icon.svg" alt="private icon" />
     {{/if}}
     {{#ifEquals event.host_id userId}}
-      <button id="add-attendees">Add Member</button>
-      <input type="text" name="addUser" id="addUser">
+      <button onclick="addAttendee()">Add Member</button>
+      <input type="text" name="addUser" id="addAttendee">
     {{else}}
       {{#if loggedIn}}
         {{#each event.party_members as |member|}}

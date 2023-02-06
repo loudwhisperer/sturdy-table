@@ -18,6 +18,22 @@ router.get("/", async (req, res) => {
 });
 */
 
+// Get a user by displayname to add to an event
+router.get('/find-user/:displayname', async (req, res) => {
+  try {
+    const user = await User.findOne({
+      raw: true,
+      where: { displayname: req.params.displayname}
+    });
+    if (!user) {
+      res.status(404).json({ message: "No User Found" });
+      return;
+    }
+    res.status(200).json(user);
+  } 
+  catch(err) {res.status(500).json(err);}
+});
+
 // Get /create-event page
 router.get('/create-event', async (req, res) => {
   try {
@@ -31,6 +47,7 @@ router.get('/create-event', async (req, res) => {
   }
 });
 
+// GET route to teh edit-event page
 router.get('/:id/edit-event', async (req, res) => {
   try {
     console.info('edit-event check: ' + req.params.id);
