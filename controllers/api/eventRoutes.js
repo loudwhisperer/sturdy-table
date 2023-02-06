@@ -32,7 +32,7 @@ router.get('/create-event', async (req, res) => {
   }
 });
 
-// GET route to teh edit-event page
+// GET route to the edit-event page
 router.get('/:id/edit-event', async (req, res) => {
   try {
     const eventData = await Event.findByPk(req.params.id, {
@@ -155,6 +155,9 @@ router.put('/approved/:eventId/:otherId', async (req, res) => {
     const data = await Eventgroup.update(req.body, {
       where: { id: getGroupId.id }
     });
+
+    // TODO - Added notification email to user
+
     res.status(200).json(data);
   }
   catch(err) {res.status(500).json(err.message);}
