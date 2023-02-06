@@ -383,6 +383,28 @@ const eventSave = async () => {
   catch (err) { console.error(err.message); }
 }
 
+//Function to create a user on the signup page
+const registerUser = async () => {
+  //TODO: Validate confirm password matches password and add avatar pic
+  try{
+  const email = document.getElementById("signUpEmail").value;
+  const username = document.getElementById("signUpDisplayName").value;
+  const password = document.getElementById("signUpPassword").value;
+      await fetch(`/api/users`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          displayname: `${username}`,
+          email: `${email}`,
+          password: `${password}`,
+        }),
+      });
+
+  } catch(err){
+    console.error(err.message)
+  }
+}
+
 // TODO - Clear add member/attendee fields after use
 // TODO - REFACTOR!!! LIKE ALOT!!
-// TODO - MUCH VALIDATION!!!
+// TODO - MUCHO VALIDATION!!!
