@@ -101,6 +101,9 @@ aside h3 {
 /* Main Content Styling */
 .content-container {
   margin: 9.5rem 1rem 1rem 17rem;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Event Card Styles */
@@ -114,7 +117,11 @@ aside h3 {
   background-color: var(--color-primary);
   color: var(--color-on-primary);
   border-radius: var(--border-radius);
-  padding: .5rem;
+  padding: 1rem;
+}
+
+.loginCard {
+  margin-bottom: 2rem;
 }
 
 .card-container-title {
