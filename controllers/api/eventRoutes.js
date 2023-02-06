@@ -40,14 +40,21 @@ router.get('/edit-event/:id', async (req, res) => {
           as: "party_members",
         },
       ],
-      raw: true
       // TODO: add an attributes to have everything returned in the user object but the encrypted password
     });
+    if (!eventData) {
+      res.status(404).json({ message: "No Event Found By This Name" });
+      return;
+    }
 
-    console.info(eventData);
+    // Turn db data into handlebars plain obj
+    const event = eventData.get({ plain: true });
+
+    console.info(event);
+    console.info(event.party_members[0]);
     
     res.render('edit-event', {
-      eventData,
+      event,
       loggedIn: req.session.loggedIn,
       userId: req.session.userId,
     });
