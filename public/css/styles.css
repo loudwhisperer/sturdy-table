@@ -194,6 +194,11 @@ aside h3 {
   flex-direction: column;
 }
 
+#pending-invites {
+  display: inline;
+  padding: 25px 0px;
+}
+
 /* Responsive Styles */
 /* Tablet - 720-1023 */
 @media screen and (max-width: 1023px) {}

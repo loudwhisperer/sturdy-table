@@ -1,4 +1,10 @@
 <section id="account-page" data-id="{{user.id}}" class="content-container event-card">
+
+ <div>
+    <h2 id="displayName">{{user.displayname}}</h2>
+    <img src="/images/mail-tablet-icon.svg" alt="mail device image">
+  </div>
+
   <!-- Events with pending invite requests -->
   <div id="pending-invites">
     <span>Attendance Requests Pending</span>
@@ -9,11 +15,7 @@
     {{/each}}
   </div>
 
-  <div>
-    <h2 id="displayName">{{user.displayname}}</h2>
-    <img src="/images/mail-tablet-icon.svg" alt="mail device image">
-  </div>
-  <!-- Events -->
+   <!-- Events -->
   <div>
     <!-- Tab links -->
     <div class="tab">
