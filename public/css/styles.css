@@ -30,14 +30,14 @@ header {
   background-color: var(--color-secondary);
   color: var(--color-on-secondary);
   display: flex;
-  /*border-bottom-right-radius: var(--border-radius);*/
+/*  border-bottom-right-radius: var(--border-radius)*/
 }
 
 .logo {
   width: 14rem;
-  height: 9rem;
+  height: 8.5rem;
   padding: .5rem 0;
-  border-radius: var(--border-radius)
+  /*border-radius: var(--border-radius);*/
   background-color: var(--color-secondary);
 }
 
@@ -106,6 +106,14 @@ aside h3 {
   flex-direction: column;
 }
 
+.content-container h1 {
+  font-size:x-large;
+}
+
+#legend {
+  padding: 2rem;
+}
+
 /* Event Card Styles */
 #event-container {
   display: grid;
@@ -168,10 +176,85 @@ aside h3 {
   justify-content: end;
 }
 
+#event-title {
+  font-size: 2rem;
+  padding: 10px 10px 20px 0px;
+}
+
+#event-game {
+  padding: 10px 10px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  font-weight:600
+}
+
+#event-game h3 {
+  font-weight: lighter;
+}
+
+#event-description {
+  padding: 10px 20px 20px 0px;
+}
+
+#event-notes {
+  padding: 10px 20px 20px 0px;
+}
+
+#event-location {
+  display: flex;
+  flex-direction: column;
+}
+
+#event-attendees {
+  padding: 20px 20px 30px 0px;
+}
+
 #event-attendees img {
   width: 20px;
   height: 20px;
   display: inline;
+}
+
+.cardStyle img {
+  width: 20px;
+  height: 20px;
+}
+
+.tabcontent {
+  font-size: larger;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.displayName {
+  display: flex;
+  flex-direction: row;
+}
+
+.displayName img {
+  height: 90px;
+  width: 90px;
+  padding: 15px;
+}
+
+#displayName {
+  font-size: 3rem;
+}
+
+#pending-invites {
+  display: inline;
+  padding: 25px 0px;
+}
+
+.tab {
+  padding: 10px 0px;
+}
+
+.modal {
+  padding: 20px 0px 10px 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive Styles */
