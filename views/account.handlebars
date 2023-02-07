@@ -1,6 +1,6 @@
 <section id="account-page" data-id="{{user.id}}" class="content-container event-card">
 
- <div>
+ <div class="displayName">
     <h2 id="displayName">{{user.displayname}}</h2>
     <img src="/images/mail-tablet-icon.svg" alt="mail device image">
   </div>
@@ -38,8 +38,10 @@
     </div>
   </div>
 
+<div class="modal">
   <span onclick="changeNameModal()">Change Screen Name</span>
   <span onclick="changePassModal()">Change Password</span>
+</div>
 
   <div id="ChangePassword" class="account-modal hidden">
     <div class="cardStyle">
