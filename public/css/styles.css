@@ -200,10 +200,6 @@ aside h3 {
   padding: 10px 20px 20px 0px;
 }
 
-#event-notes span {
-  font-weight: bold;
-}
-
 #event-location {
   display: flex;
   flex-direction: column;
